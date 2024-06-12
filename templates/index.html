@@ -51,35 +51,23 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique numquam nulla ea itaque id inventore temporibus odio blanditiis, repellat, placeat illo molestias eaque! Dolorum ea non reiciendis impedit similique dolores?
           </p>
           <table class="calendario">
-            <tr style="background-color: lightcoral;">
+            <tr style="background-color: rgb(243, 110, 110);">
+              <!--Cabeçalho do calendário-->
+              {% for cal_item in calendar_header %}
               <td>
-                teste 1
+                {{ cal_item }}
               </td>
-              <td>
-                teste 2
-              </td>
-              <td>
-                teste 3
-              </td>
-              <td>
-                teste 4
-              </td>
-              <td>
-                teste 5
-              </td>
-              <td>
-                teste 6
-              </td>
-              <td>
-                teste 7
-              </td>
-              <td>
-                teste 8
-              </td>
-              <td>
-                teste 9
-              </td>
-            </tr>
+              {% endfor %}
+            </tr">
+            {% for _ in range(num_rows) %} <!--repetir as linhas do calendario _ vezes-->
+              <tr style="background-color: rgb(233, 167, 167);">
+                {% for item in items %} <!--linhas do calendario por loop-->
+                  <td>
+                    {{ item }}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
           </table>
         </div>
       </div>
