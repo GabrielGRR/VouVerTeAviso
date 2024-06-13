@@ -1,6 +1,7 @@
 from datetime import datetime
 import pytz
 import urllib
+import calendar
 
 from flask import Flask, flash, redirect, render_template, request, session
 #from flask_session import Session
@@ -14,11 +15,16 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     calendar_header = ['semana', 'D','S','T','Q','Q','S','S','ano?']
-    items = ['dia', 'div 1', 'div 2', 'div 3', 'div 4', 'div 5', 'div 6', 'div 7', 'ano?']
+    items = ['mês', 'div 1', 'div 2', 'div 3', 'div 4', 'div 5', 'div 6', 'div 7', 'ano?']
+    months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
     num_rows = 5 #quantidade de linhas do calendário
+    calendar.setfirstweekday(0)
+
     timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do usuário
-    current_date = datetime.now(timezone).strftime("%d/%m/%Y")  # Obtém a data atual no formato DD/MM/YYYY
-    #current_time = datetime.now(timezone).strftime("%d/%m/%Y %H:%M:%S")  # Obtém a data e hora atuais no formato DD/MM/YYYY HH:MM:SS
+    current_day = datetime.now(timezone).strftime("%d")  # Obtém a data atual no formato DD/MM/YYYY
+    current_month = datetime.now(timezone).strftime("%m")  # Obtém a data atual no formato DD/MM/YYYY
+    current_year = datetime.now(timezone).strftime("%Y")  # Obtém a data atual no formato DD/MM/YYYY
+    #current_time = datetime.now(timezone).strftime("%H:%M:%S")  # Obtém as horas atuais no formato HH:MM:SS
     return render_template('index.html', items=items, num_rows=num_rows, calendar_header=calendar_header)
 
 if __name__ == '__main__':
