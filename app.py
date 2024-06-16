@@ -17,8 +17,9 @@ def index():
     calendar_header = ['semana', 'D','S','T','Q','Q','S','S','ano?']
     items = ['mês', 'div 1', 'div 2', 'div 3', 'div 4', 'div 5', 'div 6', 'div 7', 'ano?']
     months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+    months_weeks = []
     num_rows = 5 #quantidade de linhas do calendário
-    calendar.setfirstweekday(0)
+    calendar.setfirstweekday(calendar.SUNDAY) # semana começa no domingo
 
     timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do usuário
     current_day = datetime.now(timezone).strftime("%d")  # Obtém a data atual no formato DD/MM/YYYY
