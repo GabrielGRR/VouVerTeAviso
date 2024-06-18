@@ -1,29 +1,52 @@
 import calendar
 from datetime import datetime
 import pytz
+import copy
 
 calendar.setfirstweekday(calendar.SUNDAY) # semana começa no domingo
 timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do usuário
-current_day = 29#int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
-current_month = int(datetime.now(timezone).strftime("%m"))  # Obtém o mês atual
-year = int(datetime.now(timezone).strftime("%Y"))  # Obtém o ano atual
 
+#junho/2024 é um bom mês para testar todos os códigos
+
+#data atual para destacar e referenciar a partir dali
+original_day = 1#int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
+original_month = int(datetime.now(timezone).strftime("%m"))  # Obtém o mês atual
+original_year = int(datetime.now(timezone).strftime("%Y"))  # Obtém o ano atual
+
+#data da semana do loop
+current_day = original_day
+current_month = original_month
+current_year = original_year
+
+lista_mes_ano = [current_month, current_year] #para alterar o valor destas variaveis por função
+
+def next_month_calc(lista_mes_ano):
+    lista_mes_ano[0]+=1
+    if lista_mes_ano[0] > 12:
+        lista_mes_ano[0] = 1 #current_month volta pra jan
+        lista_mes_ano[1]+=1 # +1 ano
+
+def prev_month_calc(lista_mes_ano):
+    lista_mes_ano[0]-=1
+    if lista_mes_ano[0] == 0:
+        lista_mes_ano[0] = 12
+        lista_mes_ano[1]-=1
+
+#lista dos nomes dos meses no calendário
+month_oftheweek = None
 months_weeks = []
+#os meses são dicionários pq se não o primeiro item da lista teria que ser None ou qualquer outro valor, fica feio
 months = {1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun', 7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'}
 
-month_oftheweek = None
-
 #shown weeks
-week_1, week_2, week_3, week_4, week_5, week_6 = [], [], [], [], [], []
-week_list = [week_1, week_2, week_3, week_4, week_5, week_6]
+week_list = []
+num_rows = 6 #quantidade de semanas visiveis de uma vez no calendário
 
-num_rows = len(week_list) #quantidade de linhas do calendário
+month_matrix = calendar.monthcalendar(current_year, current_month) #calendário com listas de todas as semanas do mês
 
-month_matrix = calendar.monthcalendar(year, current_month) #calendário com listas de todas as semanas do mês
-
-#previous month calculation
+#previous current_ calculation
 prev_month = current_month-1
-prev_year = year
+prev_year = current_year
 
 if prev_month == 0:
     prev_month = 12
@@ -31,9 +54,9 @@ if prev_month == 0:
 
 prev_month_matrix = calendar.monthcalendar(prev_year, prev_month)
 
-#next month calculation
+#next current_ calculation ~~~~~~~~~~~~~~~possivelmente deletar esta parte
 next_month = current_month+1
-next_year = year
+next_year = current_year
 
 if next_month == 13:
     next_month = 1
@@ -41,18 +64,18 @@ if next_month == 13:
 
 next_month_matrix = calendar.monthcalendar(next_year, next_month)
 
-
-week_found = False
-week_counter = 0
 prev_verif = False
 next_verif = False
-for week in month_matrix:
+week_found = False
+week_counter = 0
+
+for week in month_matrix: #loop no mês ORIGINAL
     day_counter = 0
-    for day in week:
+    for finding_if_current_day in week:
         #printa somente a partir da semana que vc está
-        if day >= current_day: 
+        if finding_if_current_day >= current_day: 
             week_found = True
-            continue
+            continue ####################### isto talvez quebre a função 
 
     if week_found:
         #preenchendo os meses das semanas
@@ -61,22 +84,30 @@ for week in month_matrix:
             month_oftheweek = months[prev_month]+"/"+months[current_month]
         elif week[-1] == 0:
             next_verif = True
-            month_oftheweek = months[current_month]+"/"+months[next_month]
+            month_oftheweek = months[current_month]+"/"+months[next_month]##### possivelmente vai dar pau n sei como estava
         else:
             month_oftheweek = months[current_month]
 
         #substituindo os zeros 
         for day in week:
-            if day == 0:
-                if prev_verif and week_counter == 0:
-                    week[day_counter] = prev_month_matrix[-1][day_counter]
+            next_month_check = True
+            prev_month_check = True
+            if day == 0 and week[-1] == 0:
+                if next_month_check:
+                    lista_mes_ano = copy.copy()
+                    next_month_calc(lista_mes_ano) ############ resolver esta bagatela aqui    
+                next_month_check = False 
+                week[day_counter] = calendar.monthcalendar(current_year, current_month)[0][day_counter]
 
-                elif next_verif:
-                    week[day_counter] = next_month_matrix[0][day_counter]
+            elif day == 0:
+                #if prev_month_check:
+                #    prev_month_calc(lista_mes_ano)
+                prev_month_check = False    
+                week[day_counter] = calendar.monthcalendar(current_year, current_month-1)[-1][day_counter]
 
             day_counter+=1
 
-        week_list[week_counter] = week
+        week_list.append(week)
         months_weeks.append(month_oftheweek)
         week_counter+=1
 
@@ -85,10 +116,10 @@ counter = 0
 while week_counter+counter < num_rows: 
     months_weeks.append(months[next_month])
     if next_verif:
-        week_list[week_counter+counter] = next_month_matrix[counter+1]
+        week_list.append(next_month_matrix[counter+1])
 
     else:
-        week_list[week_counter+counter] = next_month_matrix[counter]
+        week_list.append(next_month_matrix[counter])
 
     counter+=1
 
@@ -97,5 +128,5 @@ while week_counter+counter < num_rows:
 for week in week_list:
     print(week)
 
-for month in months_weeks:
-    print(month)
+for current_ in months_weeks:
+    print(current_)
