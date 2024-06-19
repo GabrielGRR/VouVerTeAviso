@@ -9,7 +9,7 @@ timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do
 #junho/2024 é um bom mês para testar todos os códigos
 
 #data atual para destacar e referenciar a partir dali
-original_day = 1#int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
+original_day = 29#int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
 original_month = int(datetime.now(timezone).strftime("%m"))  # Obtém o mês atual
 original_year = int(datetime.now(timezone).strftime("%Y"))  # Obtém o ano atual
 
@@ -20,17 +20,21 @@ current_year = original_year
 
 lista_mes_ano = [current_month, current_year] #para alterar o valor destas variaveis por função
 
-def next_month_calc(lista_mes_ano):
-    lista_mes_ano[0]+=1
-    if lista_mes_ano[0] > 12:
-        lista_mes_ano[0] = 1 #current_month volta pra jan
-        lista_mes_ano[1]+=1 # +1 ano
+def next_month_calc():
+    global current_month
+    global current_year
+    current_month+=1
+    if current_month > 12:
+        current_month = 1 #current_month volta pra jan
+        current_year+=1 # +1 ano
 
-def prev_month_calc(lista_mes_ano):
-    lista_mes_ano[0]-=1
-    if lista_mes_ano[0] == 0:
-        lista_mes_ano[0] = 12
-        lista_mes_ano[1]-=1
+def prev_month_calc():
+    global current_month
+    global current_year
+    current_month-=1
+    if current_month == 0:
+        current_month = 12 #current_month volta pra dez
+        current_year-=1
 
 #lista dos nomes dos meses no calendário
 month_oftheweek = None
@@ -84,25 +88,24 @@ for week in month_matrix: #loop no mês ORIGINAL
             month_oftheweek = months[prev_month]+"/"+months[current_month]
         elif week[-1] == 0:
             next_verif = True
-            month_oftheweek = months[current_month]+"/"+months[next_month]##### possivelmente vai dar pau n sei como estava
+            month_oftheweek = months[current_month]+"/"+months[next_month]##### pode ser que dê pau
         else:
             month_oftheweek = months[current_month]
 
-        #substituindo os zeros 
+        #substituindo os zeros
+        next_month_check = True
+        #prev_month_check = True 
         for day in week:
-            next_month_check = True
-            prev_month_check = True
             if day == 0 and week[-1] == 0:
                 if next_month_check:
-                    lista_mes_ano = copy.copy()
-                    next_month_calc(lista_mes_ano) ############ resolver esta bagatela aqui    
+                    next_month_calc() ############ resolver esta bagatela aqui    
                 next_month_check = False 
                 week[day_counter] = calendar.monthcalendar(current_year, current_month)[0][day_counter]
 
             elif day == 0:
                 #if prev_month_check:
-                #    prev_month_calc(lista_mes_ano)
-                prev_month_check = False    
+                #    prev_month_calc() ####### deu pau aqui kkk
+                #prev_month_check = False    
                 week[day_counter] = calendar.monthcalendar(current_year, current_month-1)[-1][day_counter]
 
             day_counter+=1
@@ -122,6 +125,10 @@ while week_counter+counter < num_rows:
         week_list.append(next_month_matrix[counter])
 
     counter+=1
+#fazer um código orientado a objeto, onde o código adiciona cada mês normal, mas ao adicionar o mês ele checa se o anterior tem zeros no final, se tiver, substitui pelos dele
+#e retira a primeira semana
+
+
 
 #~~~~~~~~~~~~~~testar o código com início/meio/final do mês, passar este código para o app.py, interatividade (onclick com o site), fazer uma inclusão disto com o SQL
 
