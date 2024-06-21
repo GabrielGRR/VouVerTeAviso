@@ -1,7 +1,6 @@
 import calendar
 from datetime import datetime
 import pytz
-import copy
 
 calendar.setfirstweekday(calendar.SUNDAY) # semana começa no domingo
 timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do usuário
@@ -19,6 +18,7 @@ current_month = original_month
 current_year = original_year
 
 lista_mes_ano = [current_month, current_year] #para alterar o valor destas variaveis por função
+
 
 def next_month_calc():
     global current_month
@@ -125,8 +125,7 @@ while week_counter+counter < num_rows:
         week_list.append(next_month_matrix[counter])
 
     counter+=1
-#fazer um código orientado a objeto, onde o código adiciona cada mês normal, mas ao adicionar o mês ele checa se o anterior tem zeros no final, se tiver, substitui pelos dele
-#e retira a primeira semana
+#fazer um código orientado a objeto, a primeira linha checa se tem zeros do mês anterior e depois adiciona o mês via objeto
 
 
 
