@@ -50,9 +50,10 @@ def next_month_calc(current_year, current_month): #mudar pos desta linha no cód
     new_month = current_month
     new_year = current_year
     new_month+=1
-    if current_month > 12:
+    if new_month > 12:
         new_month = 1 #current_month volta pra jan
         new_year+=1 # +1 ano
+
     return new_year, new_month
 
 def prev_month_calc(current_year, current_month): #mudar pos desta linha no código?
@@ -66,7 +67,6 @@ def prev_month_calc(current_year, current_month): #mudar pos desta linha no cód
 
 def zero_removal(week):
     day_counter = 0
-    next_month_check = True
     for day in week:        
         if day == 0 and week[-1] == 0: #prox mês
             new_year, new_month = next_month_calc(current_year, current_month)
@@ -124,7 +124,6 @@ def first_month():
 
 #first_month() # primeira semana é o elemento que não se repete
 
-#add_month() #repetição de meses
 
 #add_month() #repetição de meses
 
