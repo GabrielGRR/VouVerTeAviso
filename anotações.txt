@@ -2,3 +2,4 @@ na div ano do calendário, talvez mudar cor quando aproximar de um outro ano ao 
 
 vou usar uma api LOCAL de timezone, dps tenho que escolher uma que pegue a timezone do usuário
 
+entender o que significa este pycache

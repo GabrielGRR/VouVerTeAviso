@@ -2,6 +2,7 @@ from datetime import datetime
 import pytz
 import urllib
 import calendar
+import helpers #importando as funções do meu arquivo helpers.py
 
 from flask import Flask, flash, redirect, render_template, request, session
 #from flask_session import Session
@@ -14,19 +15,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    calendar_header = ['semana', 'D','S','T','Q','Q','S','S','ano?']
-    items = ['mês', 'div 1', 'div 2', 'div 3', 'div 4', 'div 5', 'div 6', 'div 7', 'ano?']
-    months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
-    months_weeks = []
-    num_rows = 5 #quantidade de linhas do calendário
-    calendar.setfirstweekday(calendar.SUNDAY) # semana começa no domingo
+    calendar_header = ['semana', 'D','S','T','Q','Q','S','S'] #ano tbm?
+    
+    first_month_monthlist, first_month_weekslist = helpers.first_month()
+    
+    num_rows = len(first_month_monthlist)
 
-    timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do usuário
-    current_day = datetime.now(timezone).strftime("%d")  # Obtém a data atual no formato DD/MM/YYYY
-    current_month = datetime.now(timezone).strftime("%m")  # Obtém a data atual no formato DD/MM/YYYY
-    current_year = datetime.now(timezone).strftime("%Y")  # Obtém a data atual no formato DD/MM/YYYY
-    #current_time = datetime.now(timezone).strftime("%H:%M:%S")  # Obtém as horas atuais no formato HH:MM:SS
-    return render_template('index.html', items=items, num_rows=num_rows, calendar_header=calendar_header)
+    return render_template('index.html', 
+                           num_rows=num_rows, 
+                           calendar_header=calendar_header, 
+                           fm_monthlist = first_month_monthlist, 
+                           fm_weeklist = first_month_weekslist)
 
 if __name__ == '__main__':
     app.run(debug=True)

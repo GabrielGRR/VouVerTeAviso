@@ -3,8 +3,10 @@ from datetime import datetime
 import pytz
 
 #fazer um código orientado a objeto, a primeira linha checa se tem zeros do mês anterior e depois adiciona o mês via objeto
-#quatidade de meses é infinito, irar executar um novo objeto a medida que a pessoa for scrollando
-#~~~~~~~~~~~~~~testar o código com início/meio/final do mês, passar este código para o app.py, interatividade (onclick com o site), fazer uma inclusão disto com o SQL
+#quatidade de meses é infinito, irá executar um novo objeto a medida que a pessoa for scrollando
+
+#~~~~~~~~~~testar o código com início/meio/final do mês, passar este código para o app.py, 
+# interatividade (onclick com o site), fazer uma inclusão disto com o SQL
 
 calendar.setfirstweekday(calendar.SUNDAY) # semana começa no domingo
 timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do usuário
@@ -24,7 +26,7 @@ current_year = original_year
 #lista dos nomes dos meses no calendário
 
 months_weeks = []
-#os meses são dicionários pq se não o primeiro item da lista teria que ser None ou qualquer outro valor, fica feio
+#os meses são dicionários pq se não o primeiro item da lista teria que ser None ou qualquer outro valor, fica feio e não intuitivo
 months = {1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun', 7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'}
 
 #shown weeks
@@ -62,23 +64,23 @@ def prev_month_calc(current_year, current_month): #mudar pos desta linha no cód
         prev_year-=1 # +1 ano
     return prev_year, prev_month
 
-def zero_removal(w_list):
+def zero_removal(week):
     day_counter = 0
     next_month_check = True
-    for day in w_list:        
-        if day == 0 and w_list[-1] == 0: #prox mês
+    for day in week:        
+        if day == 0 and week[-1] == 0: #prox mês
             new_year, new_month = next_month_calc(current_year, current_month)
-            w_list[day_counter] = calendar.monthcalendar(new_year, new_month)[0][day_counter]
+            week[day_counter] = calendar.monthcalendar(new_year, new_month)[0][day_counter]
         
         elif day == 0: #mês anterior
             prev_year, prev_month = prev_month_calc(current_year,current_month)
-            w_list[day_counter] = calendar.monthcalendar(prev_year, prev_month)[-1][day_counter]
+            week[day_counter] = calendar.monthcalendar(prev_year, prev_month)[-1][day_counter]
        
         day_counter+=1
 
 def add_month():
     #só podem haver duas semanas com zeros, a primera ou a ultima
-    global week_list, current_month, current_year
+    global week_list, current_month, current_year, months_weeks
     new_month_matrix = calendar.monthcalendar(current_year, current_month)
     week_counter = 0
     skip = False
@@ -97,10 +99,11 @@ def add_month():
         week_counter+=1
         
     current_year, current_month = next_month_calc(current_year, current_month) #add +1 ao mês
+    return months_weeks, week_list
 
 
 def first_month():
-    global week_list, current_month, current_year
+    global week_list, current_month, current_year, months_weeks
     found = False
     for week in first_month_matrix: #loop no mês ORIGINAL
         for day in week:
@@ -116,17 +119,17 @@ def first_month():
 
     current_year, current_month = next_month_calc(current_year, current_month) #add +1 ao mês
 
+    return months_weeks, week_list
 
-first_month() # primeira semana é o elemento que não se repete
 
-add_month() #repetição de meses
+#first_month() # primeira semana é o elemento que não se repete
 
-add_month() #repetição de meses
+#add_month() #repetição de meses
 
-add_month() #repetição de meses
+#add_month() #repetição de meses
 
-for i in range(len(months_weeks)):
-    print(months_weeks[i], week_list[i])
+#first_month_monthlist, first_month_weekslist = first_month()
+#print(first_month_monthlist, first_month_weekslist)
 
 
 #se a pessoa scrollar mais do que a metade do próximo mês, add_month() e vai indo

@@ -52,6 +52,7 @@
           </p>
           <table class="calendario">
             <tr style="background-color: rgb(243, 110, 110);">
+
               <!--Cabeçalho do calendário-->
               {% for cal_item in calendar_header %}
               <td>
@@ -59,15 +60,24 @@
               </td>
               {% endfor %}
             </tr">
-            {% for _ in range(num_rows) %} <!--repetir as linhas do calendario n vezes-->
+
+            <!--inserir primeiro mês-->
+            {% for i in range(num_rows) %} 
               <tr style="background-color: rgb(233, 167, 167);">
-                {% for item in items %} <!--linhas do calendario por loop-->
+            
+                <td>
+                  {{ fm_monthlist[i] }}
+                </td>
+                
+                {% for day in fm_weeklist[i] %} <!--linhas do calendario por loop-->
                   <td>
-                    {{ item }}
+                    {{ day }}
                   </td>
                 {% endfor %}
+
               </tr>
             {% endfor %}
+
           </table>
         </div>
       </div>
