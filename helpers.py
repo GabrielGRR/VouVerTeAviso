@@ -14,7 +14,7 @@ timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do
 #junho/2024 é um bom mês para testar todos os códigos
 
 #data atual para destacar e referenciar a partir dali
-original_day = int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
+original_day = 3#int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
 original_month = int(datetime.now(timezone).strftime("%m"))  # Obtém o mês atual
 original_year = int(datetime.now(timezone).strftime("%Y"))  # Obtém o ano atual
 
@@ -103,7 +103,16 @@ def add_month():
 
 
 def first_month():
-    global week_list, current_month, current_year, months_weeks
+    global week_list, current_month, current_year, current_day, months_weeks
+
+
+    #correção caso a primeira semana tenha a semana compartilhada com o mês anterior, já que o current_month não linka o mês anterior
+    shared_first_week_month = False
+    if first_month_matrix[0][0] == 0 and first_month_matrix[0][-1] >= current_day:
+        _, current_month = prev_month_calc(current_year, current_month)
+        shared_first_week_month = True
+
+
     found = False
     for week in first_month_matrix: #loop no mês ORIGINAL
         for day in week:
@@ -117,18 +126,39 @@ def first_month():
             months_in_the_week(week)
             week_list.append(week)
 
+            if shared_first_week_month: #reestruturação do current_month
+                _, current_month = next_month_calc(current_year, current_month)
+                shared_first_week_month = False
+            
+
     current_year, current_month = next_month_calc(current_year, current_month) #add +1 ao mês
 
     return months_weeks, week_list
 
+#altera alguns itens como jan/fev para somente fev
+def month_headers():
+    global months_weeks
+    months_header = months_weeks
+    i = 0
+    for month in months_header:
+        if "/" in month:
+            last_month = month.split("/")[-1]
+            months_header[i] = last_month
+        i+=1
+    return months_header
 
-#first_month() # primeira semana é o elemento que não se repete
+first_month() # primeira semana é o elemento que não se repete
 
+add_month() #repetição de meses
+add_month() #repetição de meses
+add_month() #repetição de meses
 
-#add_month() #repetição de meses
+print(months_weeks)
+print(month_headers())
 
 #first_month_monthlist, first_month_weekslist = first_month()
 #print(first_month_monthlist, first_month_weekslist)
 
 
+#a nova ideia é sempre ter 12 meses, aí a pessoa vai scrollando até este limite
 #se a pessoa scrollar mais do que a metade do próximo mês, add_month() e vai indo

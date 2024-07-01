@@ -36,55 +36,64 @@
   <main>
     <div class="container">
       <div class="div1">
+
         <!--Texto descritivo do que é para fazer-->
         <p class="paragraph-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, sunt ipsa officiis nam saepe veniam obcaecati. Quas temporibus molestiae maiores similique cumque illum ullam nesciunt! Nulla earum ea blanditiis provident.
         </p>
-        <div>
-          <!--Form com nome do evento-->
-          <form action="/submit" method="post">
-            <div class="form-group">
-              <input type="text" name="name" placeholder="Nome do evento" title="Digite o evento a ser criado" required>
-            </div>    
-          </form>
-          <p class="paragraph-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique numquam nulla ea itaque id inventore temporibus odio blanditiis, repellat, placeat illo molestias eaque! Dolorum ea non reiciendis impedit similique dolores?
-          </p>
-          <table class="calendario">
-            <tr style="background-color: rgb(243, 110, 110);">
 
-              <!--Cabeçalho do calendário-->
-              {% for cal_item in calendar_header %}
-              <td>
-                {{ cal_item }}
-              </td>
-              {% endfor %}
-            </tr">
+        <!--Form com nome do evento-->
+        <form action="/submit" method="post">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Nome do evento" title="Digite o evento a ser criado" required>
+          </div>    
+        </form>
 
-            <!--inserir primeiro mês-->
-            {% for i in range(num_rows) %} 
-              <tr style="background-color: rgb(233, 167, 167);">
-            
-                <td>
-                  {{ monthlist[i] }}
-                </td>
-                
-                {% for day in weeklist[i] %} <!--linhas do calendario por loop-->
-                  <td>
-                    {{ day }}
-                  </td>
-                {% endfor %}
+        <!--Segundo texto-->
+        <p class="paragraph-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique numquam nulla ea itaque id inventore temporibus odio blanditiis, repellat, placeat illo molestias eaque! Dolorum ea non reiciendis impedit similique dolores?
+        </p>
 
-              </tr>
+        <!--Calendário interativo-->
+        <table class="calendario">
+          <tr style="background-color: rgb(243, 110, 110);">
+
+            <!--Cabeçalho do calendário-->
+            {% for cal_item in calendar_header %}
+            <td>
+              {{ cal_item }}
+            </td>
             {% endfor %}
+          </tr">
 
-          </table>
-        </div>
+          <!--Calendário-->
+          {% for i in range(num_rows) %} 
+            <tr style="background-color: rgb(233, 167, 167);">
+          
+              <td>
+                {{ monthlist[i] }}
+              </td>
+              
+              {% for day in weeklist[i] %} <!--linhas do calendario por loop-->
+                <td>
+                  {{ day }}
+                </td>
+              {% endfor %}
+
+            </tr>
+          {% endfor %}
+
+        </table>
+
+        
+        
+
       </div>
 
       <!--~~~~~~~~~~~~~~~~Divisão direita da tela-->
       <div class="div2">
         Div 2
+        
       </div>
     </div>
   </main>
