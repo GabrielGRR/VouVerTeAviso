@@ -2,7 +2,7 @@ from datetime import datetime
 import pytz
 import urllib
 import calendar
-from helpers import first_month, add_month #importando as funções do meu arquivo helpers.py
+from helpers import first_month, add_month, month_headers #importando as funções do meu arquivo helpers.py
 
 from flask import Flask, flash, redirect, render_template, request, session
 #from flask_session import Session
@@ -16,6 +16,8 @@ month_monthlist, month_weekslist = first_month()
 for _ in range(3): # o range deve ser de 11 meses (são 11 + first month)
     add_month()
 
+excl_months = month_headers()
+
 num_rows = len(month_monthlist)
 
 @app.route('/')
@@ -26,7 +28,8 @@ def index():
                            num_rows= num_rows, 
                            calendar_header= calendar_header, 
                            monthlist = month_monthlist, 
-                           weeklist = month_weekslist)
+                           weeklist = month_weekslist,
+                           excl_months = excl_months)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -14,7 +14,7 @@ timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo fuso horário do
 #junho/2024 é um bom mês para testar todos os códigos
 
 #data atual para destacar e referenciar a partir dali
-original_day = 3#int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
+original_day = int(datetime.now(timezone).strftime("%d"))  # Obtém o dia atual
 original_month = int(datetime.now(timezone).strftime("%m"))  # Obtém o mês atual
 original_year = int(datetime.now(timezone).strftime("%Y"))  # Obtém o ano atual
 
@@ -138,13 +138,16 @@ def first_month():
 #altera alguns itens como jan/fev para somente fev
 def month_headers():
     global months_weeks
-    months_header = months_weeks
+    months_header = []
+    month_check = set()
     i = 0
-    for month in months_header:
-        if "/" in month:
-            last_month = month.split("/")[-1]
-            months_header[i] = last_month
+    for month in months_weeks:
+        month_slashless = month.split('/')[0]
+        if month_slashless not in month_check:
+            month_check.add(month_slashless)
+            months_header.append(month_slashless)
         i+=1
+    
     return months_header
 
 first_month() # primeira semana é o elemento que não se repete
@@ -153,8 +156,10 @@ add_month() #repetição de meses
 add_month() #repetição de meses
 add_month() #repetição de meses
 
-print(months_weeks)
+
 print(month_headers())
+print('---')
+print(months_weeks)
 
 #first_month_monthlist, first_month_weekslist = first_month()
 #print(first_month_monthlist, first_month_weekslist)
