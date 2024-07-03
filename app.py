@@ -13,10 +13,11 @@ app = Flask(__name__)
 
 #iniciação do calendário
 month_monthlist, month_weekslist = first_month()
-for _ in range(3): # o range deve ser de 11 meses (são 11 + first month)
+#print(month_weekslist)
+for _ in range(11): # o range deve ser de 11 meses (são 11 + first month)
     add_month()
 
-excl_months = month_headers()
+excl_months, bool_list = month_headers()
 
 num_rows = len(month_monthlist)
 
@@ -29,7 +30,8 @@ def index():
                            calendar_header= calendar_header, 
                            monthlist = month_monthlist, 
                            weeklist = month_weekslist,
-                           excl_months = excl_months)
+                           excl_months = excl_months,
+                           bool_list = bool_list)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -2,6 +2,8 @@ na div ano do calendário, talvez mudar cor quando aproximar de um outro ano ao 
 
 vou usar uma api LOCAL de timezone, dps tenho que escolher uma que pegue a timezone do usuário
 
+interatividade (onclick com o site), fazer uma inclusão disto com o SQL
+
 entender o que significa este pycache
 
 entender como adicionar ler as divs em scroll
@@ -10,3 +12,5 @@ https://getbootstrap.com/docs/5.3/components/scrollspy/#how-it-works
 adicionar eventos?
 
 quais as próximas etapas? destrinchar isso aí
+
+encontrar quantos px tem a scrollspy navbar
