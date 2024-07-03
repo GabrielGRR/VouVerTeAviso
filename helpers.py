@@ -164,15 +164,15 @@ def month_headers():
             prev_month = month.split("/")[-1]
     return months_header, bool_months_weeks
 
-first_month() # primeira semana é o elemento que não se repete
-for _ in range(11):
-    add_month() #repetição de meses
+# first_month() # primeira semana é o elemento que não se repete
+# for _ in range(11):
+#     add_month() #repetição de meses
 
 
-months_header, bool_months_weeks = month_headers()
-print('---')
-for i in range(len(week_list)):
-    print(months_weeks[i], bool_months_weeks[i])
+# months_header, bool_months_weeks = month_headers()
+# print('---')
+# for i in range(len(week_list)):
+#     print(months_weeks[i], bool_months_weeks[i])
 
 
 

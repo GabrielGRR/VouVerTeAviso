@@ -54,40 +54,6 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique numquam nulla ea itaque id inventore temporibus odio blanditiis, repellat, placeat illo molestias eaque! Dolorum ea non reiciendis impedit similique dolores?
         </p>
 
-        <!--Calendário interativo-->
-        <table class="calendario">
-          <tr style="background-color: rgb(243, 110, 110);">
-
-            <!--Cabeçalho do calendário-->
-            {% for cal_item in calendar_header %}
-            <td>
-              {{ cal_item }}
-            </td>
-            {% endfor %}
-          </tr>
-
-          <!--Calendário-->
-          {% for i in range(num_rows) %} 
-            <tr style="background-color: rgb(233, 167, 167);">
-          
-              <td>
-                {{ monthlist[i] }}
-              </td>
-              
-              {% for day in weeklist[i] %} <!--linhas do calendario por loop-->
-                <td>
-                  {{ day }}
-                </td>
-              {% endfor %}
-
-            </tr>
-          {% endfor %}
-
-        </table>
-
-        
-        
-
       </div>
 
       <!--~~~~~~~~~~~~~~~~Divisão direita da tela-->
@@ -97,21 +63,13 @@
         <!--início menu de navegação-->
         <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
           <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a class="nav-link" href="#month_0"> {{ excl_months[0] }} </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#month_1"> {{ excl_months[1] }} </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#month_2"> {{ excl_months[2] }} </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#month_3"> {{ excl_months[3] }} </a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="#month_0"> {{ excl_months[0] }} </a></li>
+            <li class="nav-item"><a class="nav-link" href="#month_1"> {{ excl_months[1] }} </a></li>
+            <li class="nav-item"><a class="nav-link" href="#month_2"> {{ excl_months[2] }} </a></li>
+            <li class="nav-item"><a class="nav-link" href="#month_3"> {{ excl_months[3] }} </a></li>
             <!---dropdown-->
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#month_4" role="button" aria-expanded="true">Prox meses</a>
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="False">Prox meses</a>
               <ul class="dropdown-menu">
                 {% for i in range(4, 12) %} 
                   <li><a class="dropdown-item" href="#month_{{ i }}"> {{ excl_months[i] }} </a></li>
@@ -136,28 +94,25 @@
 
           <!--Calendário-->
           <table class="calendario">
-            {% set counter = 0 %}
+            {{ num_rows }}
+            {% set ns = namespace(counter=0) %}
             {% for i in range(num_rows) %}
-                <tr style="background-color: rgb(233, 167, 167)" id="month_{{ i }}">
-                    <td>
-                        {% if bool_list[i] %}
-                            <a id="month_{{ counter }}"></a>
-                            {% set counter = counter + 1 %}
-                        {% endif %}
-                        {{ monthlist[i] }} <!-- Mês, ex: jun/jul -->
-                    </td>
-                    {% for day in weeklist[i] %} <!-- Dias em td -->
-                        <td>
-                            {{ day }}
-                        </td>
-                    {% endfor %}
-                </tr>
+              <tr style="background-color: rgb(233, 167, 167)">
+                {% if bool_list[i] %}
+                <td id="month_{{ ns.counter }}">{{ monthlist[i] }}</td>
+                  {% set ns.counter = ns.counter + 1 %}
+                {% else %}
+                  <td>{{ monthlist[i] }}</td> <!-- Mês, ex: jun/jul -->
+                {% endif %}
+
+                {% for day in weeklist[i] %} <!-- Dias em td -->
+                  <td>
+                    {{ day }}
+                  </td>
+                {% endfor %}
+              </tr>
             {% endfor %}
-        </table>
-        
-        
-
-
+          </table>
         </div>
       </div>
     </div>
