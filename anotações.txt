@@ -15,4 +15,4 @@ quais as próximas etapas? destrinchar isso aí
 
 encontrar quantos px tem a scrollspy navbar
 
-substituir tables por div ~luiz
+fazer uma div que encapsule o mês inteiro para que o spyscroll funcione

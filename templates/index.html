@@ -93,15 +93,21 @@
               <div class="row" style="background-color: rgb(233, 167, 167)">
                 <div class="month">
                   {% if bool_list[i] %}
-                    <div id="month_{{ ns.counter }}">{{ monthlist[i] }}</div>
+                    <div id="month_{{ ns.counter }}">
+                      {{ monthlist[i] }}
+                    </div>
                     {% set ns.counter = ns.counter + 1 %}
                   {% else %}
-                    <div>{{ monthlist[i] }}</div> <!-- Mês, ex: jun/jul -->
+                    <div>
+                      {{ monthlist[i] }}
+                    </div> <!-- Mês, ex: jun/jul -->
                   {% endif %}
                 </div>
                 <div class="days">
                   {% for day in weeklist[i] %} <!-- Dias em divs -->
-                    <div class="day">{{ day }}</div>
+                    <div class="day">
+                      {{ day }}
+                    </div>
                   {% endfor %}
                 </div>
               </div>
