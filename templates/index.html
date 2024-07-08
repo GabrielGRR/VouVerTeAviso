@@ -105,9 +105,9 @@
                 </div>
                 <div class="days">
                   {% for day in weeklist[i] %} <!-- Dias em divs -->
-                    <a class="btn btn-outline-dark" role="button" aria-pressed="true">
-                      {{ day }}
-                    </a>
+                  <button type="button" class="btn btn-outline-dark btn-lg btn-custom toggleButton" aria-pressed="false">
+                    {{ day }}
+                  </button>
                   {% endfor %}
                 </div>
               </div>
@@ -131,5 +131,22 @@
   <footer>
 
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.toggleButton');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (button.getAttribute('aria-pressed') === 'true') {
+                    button.setAttribute('aria-pressed', 'false');
+                    button.classList.remove('pressed');
+                } else {
+                    button.setAttribute('aria-pressed', 'true');
+                    button.classList.add('pressed');
+                }
+            });
+        });
+    });
+  </script>
 </body>
 </html>

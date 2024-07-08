@@ -59,3 +59,15 @@
 .div2 {
   flex: 2; /* 2 parte */
 }
+
+.btn-custom {
+  transition: background-color 0.5s;
+  width: 45px;
+  height: 45px;
+  padding: 0px;
+  margin:4px;
+}
+.btn-custom.pressed {
+  background-color: rgba(0, 0, 0, 0.700);
+  color: white;
+}
