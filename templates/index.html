@@ -104,9 +104,9 @@
                   {% endif %}
                 </div>
                 <div class="days">
-                  {% for day in weeklist[i] %} <!-- Dias em divs -->
-                  <button type="button" class="btn btn-outline-dark btn-lg btn-custom toggleButton" aria-pressed="false">
-                    {{ day }}
+                  {% for y in range(7) %} <!-- Dias em divs -->
+                  <button type="button" class="btn btn-outline-dark btn-lg btn-custom toggleButton" aria-pressed="false" month ="{{ month_of_the_day[i][y] }}" day ="{{ weeklist[i][y] }}">
+                    {{ weeklist[i][y] }}
                   </button>
                   {% endfor %}
                 </div>
@@ -122,7 +122,12 @@
       <!--~~~~~~~~~~~~~~~~Divisão direita da tela-->
       <div class="div2">
         Div 2
-        
+
+        <div id="selected-days">
+          <h5>Days Selected:</h2>
+          <div id="days-container"></div>
+        </div>
+
 
       </div>
     </div>
@@ -133,19 +138,45 @@
   </footer>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const buttons = document.querySelectorAll('.toggleButton');
-        
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                if (button.getAttribute('aria-pressed') === 'true') {
-                    button.setAttribute('aria-pressed', 'false');
-                    button.classList.remove('pressed');
-                } else {
-                    button.setAttribute('aria-pressed', 'true');
-                    button.classList.add('pressed');
-                }
-            });
+      const buttons = document.querySelectorAll('.toggleButton');
+      const daysContainer = document.getElementById('days-container');
+
+      // Cada botão tem as classes toggleButton, day e month como atributos.
+      // a função abaixo entende se o botão está apertado ou não, mudando suas cores e aplicando as funções
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          const day = this.getAttribute('day');
+          const month = this.getAttribute('month');
+          if (button.getAttribute('aria-pressed') === 'true') {
+            button.setAttribute('aria-pressed', 'false');
+            button.classList.remove('pressed');
+            removeDayFromContainer(day, month);
+          } else {
+            button.setAttribute('aria-pressed', 'true');
+            button.classList.add('pressed');
+            addDayToContainer(day, month);
+          }
         });
+      });
+
+      //adicionar item no container
+      function addDayToContainer(day, month) {
+        const dayElement = document.createElement('div');
+        dayElement.textContent = `Day ${day} month ${month}`;
+        dayElement.setAttribute('data-day', day);
+        dayElement.setAttribute('data-month', month);
+        daysContainer.appendChild(dayElement);
+      }
+
+      //retirar item do container
+      function removeDayFromContainer(day, month) {
+        const dayElements = daysContainer.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
+        dayElements.forEach(dayElement => {
+          daysContainer.removeChild(dayElement);
+        });
+      }
+
+      //adicioanr SQL ao código ou começar implementação das HORAS nos dias adicionados...
     });
   </script>
 </body>

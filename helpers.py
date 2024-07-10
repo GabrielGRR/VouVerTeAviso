@@ -25,6 +25,9 @@ months = {1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun', 7: 'Jul', 
 week_list = []
 first_month_matrix = calendar.monthcalendar(current_year, current_month) #calendário com listas de todas as semanas do mês
 
+#lista dos dias da semana (week_list), mas com o mês que o dia pertence
+month_to_this_day = []
+
 first_month_check = True
 def months_in_the_week(week):
     #string com semana do mes (jun/jul)
@@ -164,15 +167,41 @@ def month_headers():
             prev_month = month.split("/")[-1]
     return months_header, bool_months_weeks
 
-# first_month() # primeira semana é o elemento que não se repete
-# for _ in range(11):
-#     add_month() #repetição de meses
 
+#fazer uma função que pega os valores da semana e o mês atual, define baseado no dia da semana, qual mês deveria ser daquele dia 
+def month_belong_to_day():
+    global week_list, months_weeks, month_to_this_day
+
+    weeks_count = len(week_list)
+    for i in range(weeks_count):
+        loop_week = []
+        for day in week_list[i]:
+            #semana  pertence a somente um mês
+            if len(months_weeks[i].split('/')) == 1: 
+                loop_week.append(months_weeks[i])
+            #semana pertence a dois meses, mas estamos no mês anterior, com maior dia (pode ser 29, 30 ou 31, por exemplo)
+            elif day > week_list[i][-1]:
+                loop_week.append(months_weeks[i].split('/')[0])
+            #na semana com 2 meses, estamos no novo mês
+            else:
+                loop_week.append(months_weeks[i].split('/')[-1])
+
+        month_to_this_day.append(loop_week)
+
+    return(month_to_this_day)
+
+
+# first_month() # primeira semana é o elemento que não se repete
+# for _ in range(4):
+#     add_month() #repetição de meses
+# month_belong_to_day()
 
 # months_header, bool_months_weeks = month_headers()
-# print('---')
 # for i in range(len(week_list)):
-#     print(months_weeks[i], bool_months_weeks[i])
+#     print(months_weeks[i], week_list[i])
+#     print('----')
+#     print(month_to_this_day[i])
+#     print('****')
 
 
 
