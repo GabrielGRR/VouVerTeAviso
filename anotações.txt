@@ -16,3 +16,5 @@ quais as próximas etapas? destrinchar isso aí
 encontrar quantos px tem a scrollspy navbar
 
 fazer uma div que encapsule o mês inteiro para que o spyscroll funcione
+
+nas horas colocar dois inputs hora_min e hora_max e perguntar se quer add mais opções de horas
