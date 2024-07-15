@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const day = this.getAttribute('day');
             const month = this.getAttribute('month');
             const min_hour = 5; // ~~~~~~~~ placeholder
-            const max_hour = 18; // ~~~~~~~~ placeholder
+            const max_hour = 12; // ~~~~~~~~ placeholder
             if (button.getAttribute('aria-pressed') === 'true') {
                 button.setAttribute('aria-pressed', 'false');
                 button.classList.remove('pressed');
@@ -20,18 +20,31 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 button.setAttribute('aria-pressed', 'true');
                 button.classList.add('pressed');
-                add_Day_Hour_ToContainer(day, month, min_hour, max_hour);
+                add_day_hour_ToContainer(day, month, min_hour, max_hour);
             }
         });
     });
 
     //adicionar item no container
-    function add_Day_Hour_ToContainer(day, month, min_hour, max_hour) {
-        const selected_day = document.createElement('div');
-        selected_day.textContent = `Day ${day} month ${month}`;
-        selected_day.setAttribute('data-day', day);
-        selected_day.setAttribute('data-month', month);
-        daysContainer.appendChild(selected_day);
+    // mudar nome da função para add_day_hours_div
+    function add_day_hour_ToContainer(day, month, min_hour, max_hour) {
+
+        // cria um novo elemento DIV
+        const day_div = document.createElement('div');
+
+        // adicionando id a div
+        day_div.id = 'day_${day}_month${month}';
+
+        // e adiciona algum conteúdo ao elemento
+        const day_div_text = document.createTextNode(`Day ${day} month ${month}`);
+
+        // adiciona o "text node" para o div recém criado
+        day_div.appendChild(day_div_text)
+
+        // adiciona o elemento recém criado e seu conteúdo dentro do DOM
+        const currentDiv = document.getElementById("ancora");
+        document.body.appendChild(day_div, currentDiv);
+
         let hour = min_hour;
 
         while (hour <= max_hour) {
@@ -47,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
     //retirar item do container
     function remove_DayFromContainer(day, month) {
         const dayElements = daysContainer.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
-        dayElements.forEach(selected_day => {
-            daysContainer.removeChild(selected_day);
+        dayElements.forEach(day_div => {
+            daysContainer.removeChild(day_div);
         });
 
         const hourElements = hoursContainer.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
