@@ -2,8 +2,7 @@ console.log("Script carregado")
 
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggleButton');
-    const daysContainer = document.getElementById('days-container');
-    const hoursContainer = document.getElementById('hours-container');
+    const days_hours_container = document.getElementById('days-container');
 
     // Cada botão tem as classes toggleButton, day e month como atributos.
     // a função abaixo entende se o botão está apertado ou não, mudando suas cores e aplicando as funções
@@ -29,44 +28,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // mudar nome da função para add_day_hours_div
     function add_day_hour_ToContainer(day, month, min_hour, max_hour) {
 
-        // cria um novo elemento DIV
-        const day_div = document.createElement('div');
-
-        // adicionando id a div
-        day_div.id = 'day_${day}_month${month}';
-
-        // e adiciona algum conteúdo ao elemento
-        const day_div_text = document.createTextNode(`Day ${day} month ${month}`);
-
-        // adiciona o "text node" para o div recém criado
-        day_div.appendChild(day_div_text)
-
-        // adiciona o elemento recém criado e seu conteúdo dentro do DOM
-        const currentDiv = document.getElementById("ancora");
-        document.body.appendChild(day_div, currentDiv);
+        //div container principal:
+        //container
+        //div dia_mes
+        //div com horas
+        var container = document.getElementById('days-container');
+        var novaDiv = document.createElement('div');
+        novaDiv.innerHTML = `Day ${day} month ${month}`;
+        novaDiv.setAttribute('data-day', day);
+        novaDiv.setAttribute('data-month', month);
+        container.appendChild(novaDiv);
 
         let hour = min_hour;
 
         while (hour <= max_hour) {
-            const hoursdiv = document.createElement('div');
-            hoursdiv.textContent = `hour test ${hour}`;
+            var hoursdiv = document.createElement('div');
+            hoursdiv.innerHTML = `hour test ${hour}`;
             hoursdiv.setAttribute('data-day', day);
             hoursdiv.setAttribute('data-month', month);
-            hoursContainer.appendChild(hoursdiv);
+            container.appendChild(hoursdiv);
             hour++;
         }
     }
 
     //retirar item do container
     function remove_DayFromContainer(day, month) {
-        const dayElements = daysContainer.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
-        dayElements.forEach(day_div => {
-            daysContainer.removeChild(day_div);
-        });
-
-        const hourElements = hoursContainer.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
-        hourElements.forEach(hoursdiv => {
-            hoursContainer.removeChild(hoursdiv);
+        const day_hours_elements = days_hours_container.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
+        day_hours_elements.forEach(day_div => {
+            days_hours_container.removeChild(day_div);
         });
     }
 
