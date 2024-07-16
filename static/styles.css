@@ -72,7 +72,6 @@
   color: white;
 }
 
-.hours-container {
-  display: flex;
-  flex-direction: row;
+.flex_hour {
+  display: inline-block;
 }

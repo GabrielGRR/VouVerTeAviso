@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
         //div com horas
         var container = document.getElementById('days-container');
         var day_hour_div = document.createElement('div');
+        day_hour_div.setAttribute('class', "flex_hour");
         day_hour_div.setAttribute('id',`div_${div_num}`);
+        day_hour_div.setAttribute('data-day', day);
+        day_hour_div.setAttribute('data-month', month);
         container.appendChild(day_hour_div)
 
         var day_container = document.getElementById(`div_${div_num}`);
