@@ -1,5 +1,7 @@
 console.log("Script carregado")
 
+var div_num = 0;
+
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggleButton');
     const days_hours_container = document.getElementById('days-container');
@@ -33,11 +35,17 @@ document.addEventListener('DOMContentLoaded', function () {
         //div dia_mes
         //div com horas
         var container = document.getElementById('days-container');
+        var day_hour_div = document.createElement('div');
+        day_hour_div.setAttribute('id',`div_${div_num}`);
+        container.appendChild(day_hour_div)
+
+        var day_container = document.getElementById(`div_${div_num}`);
         var novaDiv = document.createElement('div');
         novaDiv.innerHTML = `Day ${day} month ${month}`;
         novaDiv.setAttribute('data-day', day);
         novaDiv.setAttribute('data-month', month);
-        container.appendChild(novaDiv);
+        novaDiv.setAttribute('hours-container', 'hours-container')
+        day_container.appendChild(novaDiv);
 
         let hour = min_hour;
 
@@ -46,9 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
             hoursdiv.innerHTML = `hour test ${hour}`;
             hoursdiv.setAttribute('data-day', day);
             hoursdiv.setAttribute('data-month', month);
-            container.appendChild(hoursdiv);
+            hoursdiv.setAttribute('hours-container', 'hours-container')
+            day_container.appendChild(hoursdiv);
             hour++;
         }
+        div_num++;
     }
 
     //retirar item do container
@@ -57,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         day_hours_elements.forEach(day_div => {
             days_hours_container.removeChild(day_div);
         });
+        div_num--;
     }
 
     //adicioanr SQL ao código ou começar implementação das HORAS nos dias adicionados...
