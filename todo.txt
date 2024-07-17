@@ -47,3 +47,6 @@ disponibilizar como portfólio
 
 fazer interação dinamica de clicar e arrastar caixas igual no site when 2 meet
 
+mostrar botão 'add para db' somente se div_num >= 1
+
+no calendario, prox meses tem que estar destacado somente se estiver de fato nos proximos meses

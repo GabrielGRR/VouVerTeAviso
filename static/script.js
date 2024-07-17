@@ -2,9 +2,13 @@ console.log("Script carregado")
 
 var div_num = 0;
 
+var min_hour = 0; 
+var min_minute = 0; 
+var max_hour = 12; 
+var max_minute = 0; 
+
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggleButton');
-    const days_hours_container = document.getElementById('days-container');
 
     // Cada botão tem as classes toggleButton, day e month como atributos.
     // a função abaixo entende se o botão está apertado ou não, mudando suas cores e aplicando as funções
@@ -12,8 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             const day = this.getAttribute('day');
             const month = this.getAttribute('month');
-            const min_hour = 5; // ~~~~~~~~ placeholder
-            const max_hour = 12; // ~~~~~~~~ placeholder
+
             if (button.getAttribute('aria-pressed') === 'true') {
                 button.setAttribute('aria-pressed', 'false');
                 button.classList.remove('pressed');
@@ -47,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         novaDiv.innerHTML = `Day ${day} month ${month}`;
         novaDiv.setAttribute('data-day', day);
         novaDiv.setAttribute('data-month', month);
-        novaDiv.setAttribute('hours-container', 'hours-container')
         day_container.appendChild(novaDiv);
 
         let hour = min_hour;
@@ -64,14 +66,43 @@ document.addEventListener('DOMContentLoaded', function () {
         div_num++;
     }
 
+    
+
     //retirar item do container
     function remove_DayFromContainer(day, month) {
+        const days_hours_container = document.getElementById('days-container');
         const day_hours_elements = days_hours_container.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
         day_hours_elements.forEach(day_div => {
             days_hours_container.removeChild(day_div);
+            console.log('day_div', day_div);
+            console.log('day_hours_elements', day_hours_elements);
+            console.log('days_hours_container', days_hours_container);
+            div_num--;
         });
-        div_num--;
     }
-
-    //adicioanr SQL ao código ou começar implementação das HORAS nos dias adicionados...
 });
+
+function salvar_horaMin(selectId) {
+    let selectElement = document.getElementById(selectId)
+    if(selectId === 'hour_1'){
+        min_hour = selectElement.value;
+        console.log('1');
+    } else if (selectId === 'min_1'){
+        min_minute = selectElement.value;
+        console.log('2');
+    } else if (selectId === 'hour_2'){
+        max_hour = selectElement.value;
+        console.log('3');
+    } else if (selectId === 'min_2'){
+        max_minute = selectElement.value;
+        console.log('4');
+    } else {
+        console.log('Nenhum horario foi selecionado')
+    }
+}
+
+//se o evento terminar de madrugada, tem que mudar um pouco a lógica de loop e apresentação de horas
+
+
+
+//adicioanr SQL ao código ou começar implementação das HORAS nos dias adicionados...
