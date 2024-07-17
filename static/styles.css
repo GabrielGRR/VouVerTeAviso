@@ -85,12 +85,6 @@
   justify-content: space-evenly;
 }
 
-.flex_hour {
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
 .horario{
   display: inline-block;
   margin-bottom: 10px;

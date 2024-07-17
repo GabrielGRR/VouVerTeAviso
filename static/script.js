@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         //div com horas
         var container = document.getElementById('days-container');
         var day_hour_div = document.createElement('div');
-        day_hour_div.setAttribute('class', "flex_hour");
         day_hour_div.setAttribute('id',`div_${div_num}`);
         day_hour_div.setAttribute('data-day', day);
         day_hour_div.setAttribute('data-month', month);
@@ -72,13 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function remove_DayFromContainer(day, month) {
         const days_hours_container = document.getElementById('days-container');
         const day_hours_elements = days_hours_container.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
-        day_hours_elements.forEach(day_div => {
-            days_hours_container.removeChild(day_div);
-            console.log('day_div', day_div);
-            console.log('day_hours_elements', day_hours_elements);
-            console.log('days_hours_container', days_hours_container);
-            div_num--;
-        });
+        days_hours_container.removeChild(day_hours_elements[0]); //remove a div_# inteira, por ser a pai, vai com todos os childs
     }
 });
 
