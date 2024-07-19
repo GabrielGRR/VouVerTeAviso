@@ -1,8 +1,11 @@
 após criar evento, guardar informações no BD
 *nome do evento
-*dia do evento (futuramente expandir para dias)
+*dia do evento
+*mês do evento
 *id do evento
-*(futuramente, horas do evento)
+*hora minima do evento
+*hora máxima do evneto
+
 *(futuramente nome de pessoas)
 *(futuramente horarios das pessoas)
 

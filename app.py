@@ -1,15 +1,38 @@
 from datetime import datetime
-import pytz
-import urllib
-import calendar
+#import pytz
+#import urllib
+#import calendar
 from helpers import first_month, add_month, month_headers, month_belong_to_day #importando as funções do meu arquivo helpers.py
+import sqlite3 as sql
 
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, g, request
 #from flask_session import Session
 #from werkzeug.security import check_password_hash, generate_password_hash
 
 # Configure application
 app = Flask(__name__)
+
+#conectando ao DB SQLITE3
+def get_database():
+    connection = sql.connect('events_db.db')
+    cursor = connection.cursor() 
+    #potencialmente terei que deletar este código todo abaixo, pois eu acho que eu vou sobescrever um monte de coisas
+    db = '''CREATE TABLE "events" (
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "EVENT" TEXT,
+    "DAY" TEXT,
+    "MONTH" TEXT,
+    "MIN_HOUR" INTEGER,
+    "MIN_MINUTE" INTEGER,
+    "MAX_HOUR" INTEGER,
+    "MAX_MINUTE" INTEGER
+    )'''
+
+    cursor.execute(db)
+    connection.commit()
+    connection.close()
+
+
 
 #iniciação do calendário
 month_monthlist, month_weekslist = first_month()
