@@ -53,3 +53,7 @@ fazer interação dinamica de clicar e arrastar caixas igual no site when 2 meet
 mostrar botão 'add para db' somente se div_num >= 1
 
 no calendario, prox meses tem que estar destacado somente se estiver de fato nos proximos meses
+
+validar inputs que entram no SQL
+
+ver com a turma o que faz sentido ficar do lado do servidor e o que deveria ser cliente

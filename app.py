@@ -2,7 +2,7 @@ from datetime import datetime
 #import pytz
 #import urllib
 #import calendar
-from helpers import first_month, add_month, month_headers, month_belong_to_day #importando as funções do meu arquivo helpers.py
+from calendar_logic import first_month, add_month, month_headers, month_belong_to_day #importando as funções do meu arquivo helpers.py
 import sqlite3 as sql
 
 from flask import Flask, flash, redirect, render_template, g, request
@@ -14,11 +14,24 @@ app = Flask(__name__)
 
 #conectando ao DB SQLITE3
 def get_database():
+
+    #possivelmente terá um for loop aqui
+    # event = request.form["event"]
+    # day = request.form["event"]
+    # month = request.form["event"]
+    # min_hour = request.form["event"]
+    # min_minute = request.form["event"]
+    # max_hour = request.form["event"]
+    # max_minute = request.form["event"]
+
+
+
     connection = sql.connect('events_db.db')
     cursor = connection.cursor() 
     #potencialmente terei que deletar este código todo abaixo, pois eu acho que eu vou sobescrever um monte de coisas
-    db = '''CREATE TABLE "events" (
-    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    db = '''CREATE TABLE "event_days_hours" (
+    "ID_KEY" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "ID_EVENT" INTEGER,
     "EVENT" TEXT,
     "DAY" TEXT,
     "MONTH" TEXT,
