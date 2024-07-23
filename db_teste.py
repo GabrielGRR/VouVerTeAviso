@@ -12,9 +12,10 @@ connection.commit()
 connection.close()
 
 #o banco de dados funciona, agora temos alguns desafios:
-#terminar de assistir o vídeo do sqlite3 com flask https://www.youtube.com/watch?v=mWdBpNy0BAM com um certo olho crítico
 
 #será necessário DUAS tabelas, uma com o evento, outra com as informações do evento
 
 #inserir em cada uma das divs de eventos criado o dropdown de horas inicio/horas final
 #descobrir como inserir os dados de MULTIPLAS divs em sequencia, possivelmente será com o for loop, mas como que seria com o .commit()? existe outras funções?
+
+# assistir https://www.youtube.com/watch?v=v3CSQkPJtAc
