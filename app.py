@@ -27,14 +27,6 @@ num_rows = len(month_monthlist)
 def index():
     calendar_header = ['semana', 'D','S','T','Q','Q','S','S'] #ano tbm?
 
-    if request.method == "POST":
-        event_name = request.form.get("event_name")
-        hour_1 = request.form.get("hour_1")
-        hour_2 = request.form.get("hour_2")
-        print('eu tou aqui')
-
-        return f"Event name is :{event_name}\nevent starts at: {hour_1}\nevent ends at: {hour_2}"
-
     return render_template('index.html', 
                            num_rows= num_rows, 
                            calendar_header= calendar_header, 
@@ -48,11 +40,33 @@ def index():
 def layout():
     if request.method == "POST":
         print("POST")
-    event_name = request.form.get("event_name")
-    hour_1 = request.form.get("hour_1")
-    hour_2 = request.form.get("hour_2")
 
-    return f"Event name is :{event_name}\nevent starts at: {hour_1}\nevent ends at: {hour_2}"
+    connection = sql.connect('events_db.db')
+    cursor = connection.cursor() 
+
+    event_name = request.form.get("event_name")
+    execute_command = "INSERT INTO event(Event) VALUES(?)"
+    cursor.execute(execute_command, [event_name])
+    connection.commit()
+
+
+    #os códigos são executados nesta ordem para pegar a ID incrementada do evento
+    execute_command = 'INSERT INTO event_days_hours(Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute) VALUES(?, ?, ?, ?, ?, ?, ?)'
+    
+    cursor.execute('SELECT Id_event FROM event ORDER BY Id_event DESC LIMIT 1')
+    Id_event = cursor.fetchone()[0]
+    Day = 'day_test'
+    Month = 'month_test'
+    Event_min_hour = request.form.get("hour_1")
+    Event_min_minute = request.form.get("min_1")
+    Event_max_hour = request.form.get("hour_2")
+    Event_max_minute = request.form.get("min_2")
+    cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute])
+    connection.commit()
+
+    connection.close()
+
+    return f"Event name is :{event_name}\nevent starts at: {Event_min_hour}\nevent ends at: {Event_max_hour}"
     #return render_template("layout.html")
 
 if __name__ == '__main__':
