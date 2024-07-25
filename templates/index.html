@@ -53,7 +53,7 @@
 
         <!--Form 1 com nome do evento-->
         <!-- jinja { {url_for("criar_evento")} } -->
-        <form action="/" method="POST" id="criar_evento">
+        <form action="/layout" method="post" id="criar_evento">
           <div class="form-group">
             <input type="text" id="event_name" name="event_name" placeholder="Nome do evento" title="Digite o evento a ser criado" required>
           </div>
@@ -74,7 +74,7 @@
               
               <!-- FORM 2 (PRIMEIRO SELECT) -->
               <div class="horario">
-                  <select id="hour_1" onchange="salvar_horaMin('hour_1')">
+                  <select id="hour_1" name="hour_1" onchange="salvar_horaMin('hour_1')" required>
                     <option selected>Horas</option>
 
                     <!--Loop generated hours-->
@@ -85,7 +85,7 @@
                   </select>
               </div>
               
-              <!-- (SEGUNDO SELECT) -->
+              <!-- (SELECT MINUTO INICIO) -->
               <div class="horario">
                 <select id="min_1" onchange="salvar_horaMin('min_1')">
                   <option selected>Minutos</option>
@@ -104,7 +104,7 @@
 
               <!-- (PRIMEIRO SELECT) -->
               <div class="horario">
-                <select id="hour_2" onchange="salvar_horaMin('hour_2')">
+                <select id="hour_2" name="hour_2" onchange="salvar_horaMin('hour_2')" required>
                   <option selected>Horas</option>
 
                   {% for value in range(24) %}
@@ -127,6 +127,7 @@
               </div>
             </div>
           </div>
+          <button type="submit">Criar evento</button>
         </form>
 
         <!-- Navegador do Calendario -->

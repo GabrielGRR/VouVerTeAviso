@@ -57,3 +57,5 @@ no calendario, prox meses tem que estar destacado somente se estiver de fato nos
 validar inputs que entram no SQL
 
 ver com a turma o que faz sentido ficar do lado do servidor e o que deveria ser cliente
+
+reavaliar a questão de atualizar dinamica a quantidade de divs mostrada ao mudar o horário
