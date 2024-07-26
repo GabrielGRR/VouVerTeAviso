@@ -1,6 +1,7 @@
 console.log("Script carregado")
 
 var div_num = 0;
+const days_array = [];
 
 var min_hour = 8; 
 var min_minute = 0; 
@@ -51,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
         novaDiv.setAttribute('data-month', month);
         day_container.appendChild(novaDiv);
 
+        //adicionar os dias e meses para uma lista que comunicará com o backend
+        days_array.push([String(day), String(month)])
+        console.log(days_array)
+
         let hour = Number(min_hour);
 
         while (hour <= max_hour) {
@@ -71,7 +76,30 @@ document.addEventListener('DOMContentLoaded', function () {
         const days_hours_container = document.getElementById('days-container');
         const day_hours_elements = days_hours_container.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
         days_hours_container.removeChild(day_hours_elements[0]); //remove a div_# inteira, por ser a pai, vai com todos os childs
+
+        //removendo os dias da lista que comunicará com o backend
+        for (let i = days_array.length-1; i >= 0;i--){
+            if (days_array[i][0] == String(day) && days_array[i][1] == String(month)){
+                days_array.splice(i,1);
+            }
+        }
     }
+
+    console.log('talvez você veja isto só uma vez', days_array)/
+    fetch('/process-data', { 
+        method: 'POST', 
+        headers: { 
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify({days_array: days_array}) 
+      }) 
+      .then(response => response.text()) 
+      .then(result => { 
+        console.log(result); 
+      }) 
+      .catch(error => { 
+        console.error('Error:', error); 
+      }); 
 });
 
 function salvar_horaMin(selectId) {
@@ -86,6 +114,8 @@ function salvar_horaMin(selectId) {
         max_minute = selectElement.value;
     }
 }
+
+
 
 // Se o evento terminar de madrugada, tem que mudar um pouco a lógica de loop e apresentação de horas
 

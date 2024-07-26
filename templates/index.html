@@ -53,7 +53,7 @@
 
         <!--Form 1 com nome do evento-->
         <!-- jinja { {url_for("criar_evento")} } -->
-        <form action="/layout" method="post" id="criar_evento">
+        <form action="/process-data" method="post" id="criar_evento">
           <div class="form-group">
             <input type="text" id="event_name" name="event_name" placeholder="Nome do evento" title="Digite o evento a ser criado" required>
           </div>
@@ -127,7 +127,10 @@
               </div>
             </div>
           </div>
-          <button type="submit">Criar evento</button>
+          <div class="submit_button">
+            <button type="submit" id="botao_hora">Criar evento</button>
+          </div>
+          
         </form>
 
         <!-- Navegador do Calendario -->
@@ -207,7 +210,7 @@
         <h5>Days Selected:</h2>
           <div id="days_and_hours_container">
             <div class= "days-container" id="days-container"></div>
-            <button type="submit" id="botao_hora" form="event_name">Criar evento</button>
+            <button type="submit" id="botao_hora" form="event_name">Ainda n faz nada</button>
           </div>
       </div>
     </div>
