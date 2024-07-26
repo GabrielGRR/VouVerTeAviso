@@ -51,3 +51,6 @@ nas horas colocar dois inputs hora_min e hora_max e perguntar se quer add mais o
     "User_max_hour" INTEGER,
     "User_max_minute" INTEGER
     )'''
+
+
+    gerar chave aleatoria para o link url de invite

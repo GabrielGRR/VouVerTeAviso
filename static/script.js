@@ -10,6 +10,7 @@ var max_minute = 0;
 
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggleButton');
+    const form = document.querySelector('#criar_evento')
 
     // Cada botão tem as classes toggleButton, day e month como atributos.
     // a função abaixo entende se o botão está apertado ou não, mudando suas cores e aplicando as funções
@@ -85,21 +86,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    console.log('talvez você veja isto só uma vez', days_array)/
-    fetch('/process-data', { 
-        method: 'POST', 
-        headers: { 
-          'Content-Type': 'application/json'
-        }, 
-        body: JSON.stringify({days_array: days_array}) 
-      }) 
-      .then(response => response.text()) 
-      .then(result => { 
-        console.log(result); 
-      }) 
-      .catch(error => { 
-        console.error('Error:', error); 
-      }); 
+
+    //transforma o http em jason
+    form.addEventListener('submit', function(evento){
+        //para todos os comportamentos do html
+        evento.preventDefault()
+        const data = new FormData(evento.target);
+        const event_min_hour = data.get("hour_1");
+        const event_min_minute = data.get("min_1");
+        const event_max_hour = data.get("hour_2");
+        const event_max_minute = data.get("min_2");
+        const event_name = data.get("event_name");
+
+        fetch('/process-data', { 
+            method: 'POST', 
+            headers: { 
+              'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify({days_array, event_min_hour, event_min_minute, 
+                event_max_hour, event_max_minute, event_name}) 
+          }) 
+          .then(response => response.text()) 
+          .then(result => {window.location.replace(result.url)}) 
+          .catch(error => { console.error('Error:', error)}); 
+    });
+
+    
 });
 
 function salvar_horaMin(selectId) {

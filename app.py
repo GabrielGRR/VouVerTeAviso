@@ -40,36 +40,50 @@ def index():
 @app.route('/process-data', methods=["POST", "GET"])
 def process_data():
     if request.method == "POST":
-        print("POST")
-
         #cria conexão com o BD
         connection = sql.connect('events_db.db')
         #Cursor é o objeto que irá manipular a DB, acessando as células e executando comandos
         cursor = connection.cursor() 
-        #adicionando primeiro o evento para pegar sua ID única
-        event_name = request.form.get("event_name")
+        #coletando dados do JSON, o formato é em DICT{'days_array': [['24', 'Jul'], ['31', 'Jul']], 'event_min_hour': '4', 'event_min_minute': '50', 'event_max_hour': '7', 'event_max_minute': '50', 'event_name': 'ssss'}
+        
+        data_package = request.get_json()
+        event_name = data_package.get('event_name')
         execute_command = "INSERT INTO event(Event) VALUES(?)"
         cursor.execute(execute_command, [event_name])
         connection.commit()
 
         #agora é adicionado outras informações, como horário mínimo e máximo e linkando ao ID único do evento
-        execute_command = 'INSERT INTO event_days_hours(Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute) VALUES(?, ?, ?, ?, ?, ?, ?)'
-        cursor.execute('SELECT Id_event FROM event ORDER BY Id_event DESC LIMIT 1')
-        Id_event = cursor.fetchone()[0]
-        
-        Day = 'day_test'
-        Month = 'month_test'
-        Event_min_hour = request.form.get("hour_1")
-        Event_min_minute = request.form.get("min_1")
-        Event_max_hour = request.form.get("hour_2")
-        Event_max_minute = request.form.get("min_2")
-        cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute])
-        connection.commit()
+        execute_command = """INSERT INTO event_days_hours(
+        Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute
+        ) VALUES(?, ?, ?, ?, ?, ?, ?)"""
 
+        Id_event = cursor.lastrowid
+
+        days_array = data_package.get('days_array')
+
+        for i in range(len(days_array)):
+            Day = days_array[i][0]
+            Month = days_array[i][1]
+
+            #possivelmente terei de escalar este código ao incluir horários individuais dos dias de evento
+            Event_min_hour = data_package.get('event_min_hour')
+            Event_min_minute = data_package.get('event_min_minute')
+            Event_max_hour = data_package.get('event_max_hour')
+            Event_max_minute = data_package.get('event_max_minute')
+            cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
+                                            Event_min_minute, Event_max_hour, Event_max_minute])
+            connection.commit()
+
+            return render_template('layout.html')
+        
         connection.close()
 
-        days_list = request.json.get('days_array')
-        return jsonify({'result': days_list}) 
+        print(data_package)
+        print("passou por aqui também")
+
+        return render_template('layout.html')
+    
+
         #return f"Event name is: {event_name}\nevent starts at: {Event_min_hour}\nevent ends at: {Event_max_hour}"
         #return render_template("process_data.html")
     else:
