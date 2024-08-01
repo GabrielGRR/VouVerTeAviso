@@ -88,27 +88,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //transforma o http em jason
-    form.addEventListener('submit', function(evento){
-        //para todos os comportamentos do html
-        evento.preventDefault()
+    form.addEventListener('submit', function(evento) {
+        // Previne o comportamento padrão do formulário HTML
+        evento.preventDefault();
+    
+        // Coleta os dados do formulário
         const data = new FormData(evento.target);
         const event_min_hour = data.get("hour_1");
         const event_min_minute = data.get("min_1");
         const event_max_hour = data.get("hour_2");
         const event_max_minute = data.get("min_2");
         const event_name = data.get("event_name");
-
+    
+        // Envia a solicitação HTTP usando fetch
         fetch('/process-data', { 
             method: 'POST', 
             headers: { 
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }, 
-            body: JSON.stringify({days_array, event_min_hour, event_min_minute, 
-                event_max_hour, event_max_minute, event_name}) 
-          }) 
-          .then(response => response.text()) 
-          .then(result => {window.location.replace(result.url)}) 
-          .catch(error => { console.error('Error:', error)}); 
+            body: JSON.stringify({
+                days_array, 
+                event_min_hour, 
+                event_min_minute, 
+                event_max_hour, 
+                event_max_minute, 
+                event_name
+            }) 
+        })
+        .then(response => {
+            // Verifica se a resposta foi bem-sucedida
+            if (!response.ok) {
+                throw new Error('Erro na resposta do servidor');
+            }
+            // Converte a resposta para JSON
+            return response.json();
+        })
+        .then(result => {
+            // Lida com o resultado da resposta
+            console.log('Sucesso:', result);
+            window.location.replace(result.url);
+        })
+        .catch(error => {
+            // Lida com qualquer erro que ocorreu durante a solicitação
+            console.error('Erro:', error);
+        });
     });
 
     

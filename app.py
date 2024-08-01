@@ -44,7 +44,8 @@ def process_data():
         connection = sql.connect('events_db.db')
         #Cursor é o objeto que irá manipular a DB, acessando as células e executando comandos
         cursor = connection.cursor() 
-        #coletando dados do JSON, o formato é em DICT{'days_array': [['24', 'Jul'], ['31', 'Jul']], 'event_min_hour': '4', 'event_min_minute': '50', 'event_max_hour': '7', 'event_max_minute': '50', 'event_name': 'ssss'}
+        #coletando dados do JSON, o formato é em DICT{'days_array': [['24', 'Jul'], ['31', 'Jul']], 'event_min_hour': '4', 
+        # 'event_min_minute': '50', 'event_max_hour': '7', 'event_max_minute': '50', 'event_name': 'ssss'}
         
         data_package = request.get_json()
         event_name = data_package.get('event_name')
@@ -73,13 +74,18 @@ def process_data():
             cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
                                             Event_min_minute, Event_max_hour, Event_max_minute])
             connection.commit()
-
-            return render_template('layout.html')
+            connection.close()
+            
+            return jsonify({"url": f"/{Id_event}", 
+                            "Id_event": Id_event
+                            })
         
         connection.close()
 
+        #avaliar se aqui será alcançado em alguma situação
+
         print(data_package)
-        print("passou por aqui também")
+        print("metodo get")
 
         return render_template('layout.html')
     
@@ -92,6 +98,10 @@ def process_data():
             return "Você tentou acessar diretamente pelo método GET"
         else:
             return "Falhou em alguma outra etapa"
+        
+@app.route('/<int:Id_event>', methods=["POST", "GET"])
+def layout(Id_event):
+    return f"o Id_event é {Id_event}"
 
 if __name__ == '__main__':
     app.run(debug=True)
