@@ -54,3 +54,5 @@ nas horas colocar dois inputs hora_min e hora_max e perguntar se quer add mais o
 
 
     gerar chave aleatoria para o link url de invite
+
+    adicoinar extended templates?
