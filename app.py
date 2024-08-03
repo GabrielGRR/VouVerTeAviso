@@ -67,6 +67,7 @@ def process_data():
             Month = days_array[i][1]
 
             #possivelmente terei de escalar este código ao incluir horários individuais dos dias de evento
+            
             Event_min_hour = data_package.get('event_min_hour')
             Event_min_minute = data_package.get('event_min_minute')
             Event_max_hour = data_package.get('event_max_hour')
@@ -74,24 +75,14 @@ def process_data():
             cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
                                             Event_min_minute, Event_max_hour, Event_max_minute])
             connection.commit()
-            connection.close()
-            
-            return jsonify({"url": f"/{Id_event}", 
-                            "Id_event": Id_event
-                            })
-        
-        connection.close()
-
-        #avaliar se aqui será alcançado em alguma situação
 
         print(data_package)
-        print("metodo get")
 
-        return render_template('layout.html')
-    
+        connection.close()   
+        return jsonify({"url": f"/{Id_event}", 
+                        "Id_event": Id_event
+                        })
 
-        #return f"Event name is: {event_name}\nevent starts at: {Event_min_hour}\nevent ends at: {Event_max_hour}"
-        #return render_template("process_data.html")
     else:
         print("deu ruim")
         if request.method == "GET":
@@ -100,8 +91,15 @@ def process_data():
             return "Falhou em alguma outra etapa"
         
 @app.route('/<int:Id_event>', methods=["POST", "GET"])
-def layout(Id_event):
-    return f"o Id_event é {Id_event}"
+def events(Id_event):
+    #cria conexão com o BD
+    connection = sql.connect('events_db.db')
+    cursor = connection.cursor()
+    query = f"select Day, Month from event_days_hours where Id_event = {Id_event};"
+    result = cursor.execute(query).fetchall()
+    print(result)
+    connection.close() #talvez seja desnecessário
+    return render_template('event.html', Id_event = Id_event, len_results = len(result) )
 
 if __name__ == '__main__':
     app.run(debug=True)

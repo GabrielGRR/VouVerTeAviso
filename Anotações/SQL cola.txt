@@ -1,0 +1,33 @@
+'''CREATE TABLE "event" (
+    "Id_event" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "Event" TEXT
+    )'''
+
+'''CREATE TABLE "event_days_hours" (
+    "Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "Id_event" INTEGER,
+    "Day" TEXT,
+    "Month" TEXT,
+    "Event_min_hour" INTEGER,
+    "Event_min_minute" INTEGER,
+    "Event_max_hour" INTEGER,
+    "Event_max_minute" INTEGER
+    )'''
+
+'''CREATE TABLE "users" (
+    "Id_user" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "Id_event" INTEGER,
+    "Name" TEXT
+    )'''
+
+'''CREATE TABLE "users_days_hours" (
+    "Id_user" INTEGER,
+    "Id_event" INTEGER,
+    "Day" TEXT,
+    "Month" TEXT,
+    "User_min_hour" INTEGER,
+    "User_min_minute" INTEGER,
+    "User_max_hour" INTEGER,
+    "User_max_minute" INTEGER
+    )'''
+

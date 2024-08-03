@@ -1,0 +1,61 @@
+*Agora
+
+1. Crie uma grade de horários:
+   - Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
+   - Use uma tabela HTML ou divs para representar visualmente esses intervalos.
+
+2. Implemente a interação de clique e arrasto:
+   - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).
+   - Ao clicar, marque o primeiro intervalo como selecionado.
+   - Enquanto arrasta, continue marcando os intervalos sobre os quais o mouse passa.
+
+3. Estilize os intervalos selecionados:
+   - Use CSS para destacar visualmente os intervalos escolhidos.
+
+4. Armazene as seleções:
+   - Crie uma estrutura de dados para guardar os horários selecionados.
+   - Atualize essa estrutura conforme o usuário faz seleções.
+
+5. Implemente a funcionalidade de desselecionar:
+   - Permita que o usuário desmarque intervalos já selecionados.
+
+6. Adicione botões para selecionar/desselecionar dias inteiros:
+   - Crie opções para marcar rapidamente um dia todo como disponível ou indisponível.
+
+7. Crie uma função para salvar as seleções:
+   - Envie os dados para o servidor quando o usuário finalizar.
+
+8. Adicione feedback visual:
+   - Mostre ao usuário que suas seleções foram salvas com sucesso.
+
+9. Implemente a responsividade:
+   - Certifique-se de que a interface funcione bem em dispositivos móveis.
+
+
+
+
+
+
+*Depois
+embelezar o spyscrolls
+responsividade
+na div ano do calendário, talvez mudar cor quando aproximar de um outro ano ao arrastar os dias
+entender o que significa este pycache
+arrumar a 'semana' do scrollspy
+gerar chave aleatoria para o link url de invite
+adicionar senha ao usuario
+dar uma estilizida no site
+mostrar botão 'add para db' somente se div_num >= 1 (ou outro processo de validação)
+validar inputs que entram no SQL
+proteções no código, como SQL injection
+
+
+
+-talvez?
+ver com a turma o que faz sentido ficar do lado do servidor e o que deveria ser cliente
+
+usar uma api que pegue a timezone do usuário?
+
+adicoinar extended templates?
+
+adicionar doação ou ad?
