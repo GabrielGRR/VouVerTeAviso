@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
             hoursdiv.setAttribute('data-day', day);
             hoursdiv.setAttribute('data-month', month);
             hoursdiv.setAttribute('hours-container', 'hours-container')
+            hoursdiv.setAttribute('class','border border-dark hour')
             day_container.appendChild(hoursdiv);
             hour++;
         }

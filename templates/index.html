@@ -91,8 +91,8 @@
                 <select id="min_1" name="min_1" onchange="salvar_horaMin('min_1')">
                   <option selected>Minutos</option>
 
-                  {% for value in range(6) %}
-                    <option value="{{value * 10}}">{{ value * 10 }}</option>
+                  {% for value in range(4) %}
+                    <option value="{{value * 10}}">{{ value * 15 }}</option>
                   {% endfor %}
 
                 </select>
@@ -120,8 +120,8 @@
                 <select id="min_2" name="min_2" onchange="salvar_horaMin('min_2')">
                   <option selected>Minutos</option>
 
-                  {% for value in range(6) %}
-                    <option value="{{value * 10}}">{{ value * 10 }}</option>
+                  {% for value in range(4) %}
+                    <option value="{{value * 10}}">{{ value * 15 }}</option>
                   {% endfor %}
 
                 </select>

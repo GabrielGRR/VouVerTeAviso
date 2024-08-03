@@ -95,11 +95,12 @@ def events(Id_event):
     #cria conexão com o BD
     connection = sql.connect('events_db.db')
     cursor = connection.cursor()
-    query = f"select Day, Month from event_days_hours where Id_event = {Id_event};"
+    query = f"select Day, Month, Event_min_hour, Event_max_hour from event_days_hours where Id_event = {Id_event};"
     result = cursor.execute(query).fetchall()
     print(result)
+    print(type(result[0][-1]))
     connection.close() #talvez seja desnecessário
-    return render_template('event.html', Id_event = Id_event, len_results = len(result) )
+    return render_template('event.html', Id_event = Id_event, days_list = result )
 
 if __name__ == '__main__':
     app.run(debug=True)

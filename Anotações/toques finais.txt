@@ -3,6 +3,7 @@
 1. Crie uma grade de horários:
    - Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
    - Use uma tabela HTML ou divs para representar visualmente esses intervalos.
+/\ acho que está feito
 
 2. Implemente a interação de clique e arrasto:
    - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).
@@ -14,6 +15,7 @@
 
 4. Armazene as seleções:
    - Crie uma estrutura de dados para guardar os horários selecionados.
+   * possivelmente adicionar um ajax em tempo real? questionar o claude sobre isso
    - Atualize essa estrutura conforme o usuário faz seleções.
 
 5. Implemente a funcionalidade de desselecionar:
@@ -37,6 +39,8 @@
 
 
 *Depois
+
+se a hora final do evento for tipo 3 da manhã e a inicial for 18, o código detectar essa putaria
 embelezar o spyscrolls
 responsividade
 na div ano do calendário, talvez mudar cor quando aproximar de um outro ano ao arrastar os dias

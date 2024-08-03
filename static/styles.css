@@ -94,17 +94,29 @@
   margin: 10px;
 }
 
-
-.div1_event {
-  flex: 2; /* 4 partes */
-  background-color: lightblue;
-  display: flex;
+.hour{
+  margin: 5px;
+  padding: 5px;
+  aspect-ratio: 1/1;
+  align-content: center;
 }
 
-.teste{
+.hour_event_container{
   background-color: burlywood;
-  height: fit-content;
-  width: fit-content;
-  margin: auto;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.hour_event{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.minute{
+  width: 100%;
+  background-color: rgba(165, 42, 42, 0.479);
 }
