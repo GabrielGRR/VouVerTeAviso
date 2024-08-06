@@ -104,6 +104,10 @@ def events(Id_event):
         return redirect(url_for('index'))
 
     print(type(result[0][-1]))
+    # if not isinstance(result[0][-1], int):
+    #     print('is not int')
+    #     result[0][-1] = 12
+    #     result[0][-2] = 18
     connection.close() #talvez seja desnecessário
     return render_template('event.html', Id_event = Id_event, days_list = result )
 

@@ -95,7 +95,7 @@
 }
 
 .hour{
-  margin: 5px;
+  margin: 1px;
   padding: 5px;
   aspect-ratio: 1/1;
   align-content: center;
@@ -108,6 +108,12 @@
   justify-content: space-evenly;
 }
 
+.days-event-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .hour_event{
   display: flex;
   flex-direction: column;
@@ -117,6 +123,6 @@
 }
 
 .minute{
-  width: 100%;
+  width: 58px;
   background-color: rgba(165, 42, 42, 0.479);
 }

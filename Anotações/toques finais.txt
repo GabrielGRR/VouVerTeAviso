@@ -53,6 +53,8 @@ mostrar botão 'add para db' somente se div_num >= 1 (ou outro processo de valid
 validar inputs que entram no SQL
 proteções no código, como SQL injection
 
+mudar valor do select de default 12 e 18 (hour_1 e hour_2)
+
 
 
 -talvez?

@@ -135,6 +135,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // // Checar se o forms foi preenchido
+    // const selects = document.querySelectorAll('select[required]');
+    // const submitButton = document.getElementById('botao_hora');
+    // const event_name = document.getElementById('event_name');
+    
+    // function checkSelects() {
+    //     let allFilled = true;
+    
+    //     selects.forEach(select => {
+    //         console.log(`Valor do select: ${select.value}`);
+    //         if (!select.value || select.value === 'Horas' || select.value === 'Minutos') {
+    //             allFilled = false;
+    //         }
+    //     });
+    
+    //     console.log(`Valor do event_name: ${event_name.value.trim()}`);
+    //     if (!event_name.value.trim()) {
+    //         allFilled = false;
+    //     }
+    
+    //     console.log(`Todos preenchidos: ${allFilled}`);
+    //     submitButton.disabled = !allFilled;
+    // }
+    
+    // selects.forEach(select => {
+    //     select.addEventListener('change', checkSelects);
+    // });
+    
+    // event_name.addEventListener('input', checkSelects); // Adiciona evento de input para o campo event_name
+    
+    // checkSelects(); // Verificação inicial
     
 });
 
@@ -150,6 +181,8 @@ function salvar_horaMin(selectId) {
         max_minute = selectElement.value;
     }
 }
+
+
 
 
 
