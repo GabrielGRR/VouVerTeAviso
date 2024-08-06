@@ -97,7 +97,12 @@ def events(Id_event):
     cursor = connection.cursor()
     query = f"select Day, Month, Event_min_hour, Event_max_hour from event_days_hours where Id_event = {Id_event};"
     result = cursor.execute(query).fetchall()
-    print(result)
+    
+    #se não tiver dias marcados no calendário
+    if not result:
+        print('fedorento deu submit vazio')
+        return redirect(url_for('index'))
+
     print(type(result[0][-1]))
     connection.close() #talvez seja desnecessário
     return render_template('event.html', Id_event = Id_event, days_list = result )

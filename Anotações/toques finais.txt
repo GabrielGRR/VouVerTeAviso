@@ -29,7 +29,7 @@
 
 8. Adicione feedback visual:
    - Mostre ao usuário que suas seleções foram salvas com sucesso.
-
+ss
 9. Implemente a responsividade:
    - Certifique-se de que a interface funcione bem em dispositivos móveis.
 
