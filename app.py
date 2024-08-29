@@ -5,7 +5,6 @@ from datetime import datetime
 from calendar_logic import first_month, add_month, month_headers, month_belong_to_day #importando as funções do meu arquivo helpers.py
 import sqlite3 as sql
 
-
 from flask import Flask, flash, redirect, render_template, g, request, jsonify, url_for 
 #from flask_session import Session
 #from werkzeug.security import check_password_hash, generate_password_hash
@@ -83,6 +82,7 @@ def process_data():
                         "Id_event": Id_event
                         })
 
+    #aqui com certeza tem problema
     else:
         print("deu ruim")
         if request.method == "GET":
