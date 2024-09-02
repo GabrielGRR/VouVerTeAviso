@@ -102,6 +102,7 @@ def events(Id_event):
     if not result:
         print('fedorento deu submit vazio')
         return redirect(url_for('index'))
+    #apagar dps (só sincronizar github)
 
     print(type(result[0][-1]))
     # if not isinstance(result[0][-1], int):
