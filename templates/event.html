@@ -44,12 +44,8 @@
     <main>
         <div class="div_container">
             <!-- Div 1 -->
-
-            <div class="div1">
-                
+            <div id="teste1" class="div1">
             </div>
-
-            
 
             <!-- Div 2 -->
             <div class="div2">
@@ -63,16 +59,16 @@
                             {{ day[0] }} / {{ day[1] }}  
                             {% for i in range(day[-1] - day[-2]) %}
                             <div class="hour_event border border-dark hour">
-                                <div id="min_00" class="border minute">
+                                <div id="min_box" minute="00" class="border minute min_box">
                                     0
                                 </div>
-                                <div id="min_15" class="border minute">
+                                <div id="min_box" minute="15" class="border minute min_box">
                                     1
                                 </div>
-                                <div id="min_30" class="border minute">
+                                <div id="min_box" minute="30" class="border minute min_box">
                                     2
                                 </div>
-                                <div id="min_45" class="border minute">
+                                <div id="min_box" minute="45" class="border minute min_box">
                                     3
                                 </div>
                             </div>
