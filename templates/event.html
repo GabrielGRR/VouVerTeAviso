@@ -51,25 +51,28 @@
             <div class="div2">
 
                 <div class="days-event-container">
-                    
                     {% for day in days_list %}
                     <!-- {% set ns = namespace(counter=day[-2]) %} -->
                     <!-- {{ ns.counter }} -->
+                        <div id="teste_horas"> teste 
+
+                        </div>
                         <div> 
                             {{ day[0] }} / {{ day[1] }}  
                             {% for i in range(day[-1] - day[-2]) %}
+                            
                             <div class="hour_event border border-dark hour">
                                 <div id="min_box" minute="00" class="border minute min_box">
-                                    0
+                                    00
                                 </div>
                                 <div id="min_box" minute="15" class="border minute min_box">
-                                    1
+                                    15
                                 </div>
                                 <div id="min_box" minute="30" class="border minute min_box">
-                                    2
+                                    30
                                 </div>
                                 <div id="min_box" minute="45" class="border minute min_box">
-                                    3
+                                    45
                                 </div>
                             </div>
                             

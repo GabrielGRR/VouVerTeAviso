@@ -130,3 +130,7 @@
 .hour_selected {
   background-color: green;
 }
+
+div {
+  outline: 1px dashed blue; /* Dashed blue outline */
+}
