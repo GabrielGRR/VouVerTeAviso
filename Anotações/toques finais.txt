@@ -12,6 +12,7 @@
 
 3. Estilize os intervalos selecionados:
    - Use CSS para destacar visualmente os intervalos escolhidos.
+/\ acho que está feito
 
 4. Armazene as seleções:
    - Crie uma estrutura de dados para guardar os horários selecionados.

@@ -62,16 +62,16 @@
                             {% for i in range(day[-1] - day[-2]) %}
                             
                             <div class="hour_event border border-dark hour">
-                                <div id="min_box" minute="00" class="border minute min_box">
+                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="00" class="border minute min_box">
                                     00
                                 </div>
-                                <div id="min_box" minute="15" class="border minute min_box">
+                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" class="border minute min_box">
                                     15
                                 </div>
-                                <div id="min_box" minute="30" class="border minute min_box">
+                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" class="border minute min_box">
                                     30
                                 </div>
-                                <div id="min_box" minute="45" class="border minute min_box">
+                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" class="border minute min_box">
                                     45
                                 </div>
                             </div>
