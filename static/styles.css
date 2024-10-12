@@ -12,6 +12,7 @@
 .div1 {
   flex: 2; /* 4 partes */
   background-color: lightblue;
+  text-align: center;
   .scrollspy-example{overflow: scroll; max-height: 300px; overflow-x: hidden};
 }
 
@@ -138,7 +139,11 @@
 }
 
 .days_hours_blocks {
-  margin-right:10px
+  margin-right:3px
+}
+
+.date_text {
+  text-align: right;
 }
 
 div {
