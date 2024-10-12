@@ -1,10 +1,5 @@
 MVP!
 
-1. Crie uma grade de horários:
-   V Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
-   V Use uma tabela HTML ou divs para representar visualmente esses intervalos.
-   - adicionar as horas ao lado da box de horários
-
 4. Armazene as seleções:
    ? o que indicaria quais intervalos irão para o DB são as classes selecionadas?
    - adicionar um botão para guardar os valores com as classes específicas ativadas
@@ -13,7 +8,7 @@ MVP!
 8. Adicione feedback visual:
    - Mostre ao usuário que suas seleções foram salvas com sucesso.
 
-
+?. Tentar embelezar o site com bootstrap ou sei lá
 
 *Depois
 
@@ -67,3 +62,8 @@ adicionar doação ou ad?
 5. Implemente a funcionalidade de desselecionar:
    - Permita que o usuário desmarque intervalos já selecionados.
 /\ está feito? acho que sim
+
+1. Crie uma grade de horários:
+   V Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
+   V Use uma tabela HTML ou divs para representar visualmente esses intervalos.
+   V adicionar as horas ao lado da box de horários
