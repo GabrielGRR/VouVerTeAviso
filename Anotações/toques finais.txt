@@ -9,8 +9,13 @@ MVP!
    - Mostre ao usuário que suas seleções foram salvas com sucesso.
 
 ?. Tentar embelezar o site com bootstrap ou sei lá
+atualizar index.html div 2 com as mesmas classes do event.html (as horas)
+
+terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
 *Depois
+
+avaliar necessidade dos minutos na pagina index
 
 2. Implemente a interação de clique e arrasto:
    - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).
@@ -44,14 +49,11 @@ mudar valor do select de default 12 e 18 (hour_1 e hour_2)
 -talvez?
 ver com a turma o que faz sentido ficar do lado do servidor e o que deveria ser cliente
 
-adicionar extended templates?
-
 adicionar doação ou ad?
 
-6. Adicione botões para selecionar/desselecionar dias inteiros:
-   - Crie opções para marcar rapidamente um dia todo como disponível ou indisponível.
-(nem entendi o que o claude quis dizer com isso)
+add botão de desmarcar todos os dias
 
+adicionar extended templates?
 
 
 ## Feito!

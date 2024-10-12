@@ -56,8 +56,8 @@
                     
                     {% set hour = namespace(counter=day[2]) %}
                         <div class="days_hours_blocks"> 
-                            {{ day[0] }} / {{ day[1] }}  
-                            {% for i in range(day[-1] - day[-2]+1) %}
+                            {{ day[0] }} / {{ day[1] }}
+                            {% for i in range(day[3] - day[2]+1) %}
                             
                             <div class="hour_display">
                                 <div>
@@ -85,6 +85,7 @@
                     {% endfor %}
                 </div>
 
+                <button id="add_hrs_db">Add disponibilidade</button>
             </div>
     </main>
 
