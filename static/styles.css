@@ -131,6 +131,16 @@
   background-color: rgb(23, 133, 23);
 }
 
+.hour_display {
+  display:flex;
+  flex-direction: row;
+}
+
+.days_hours_blocks {
+  margin-right:10px
+}
+
+
 div {
   outline: 1px dashed blue; /* Dashed blue outline */
 }

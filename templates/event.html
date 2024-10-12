@@ -51,33 +51,36 @@
             <div class="div2">
 
                 <div class="days-event-container">
-                    {% for day in days_list %}
-                    <!-- {% set ns = namespace(counter=day[-2]) %} -->
-                    <!-- {{ ns.counter }} -->
-                        <div id="teste_horas"> teste 
-
-                        </div>
-                        <div> 
+                    {% for day in event_data %}
+                    <!--event_Data = [Day, Month, Event_min_hour, Event_max_hour]-->
+                    
+                    {% set hour = namespace(counter=day[2]) %}
+                        <div class="days_hours_blocks"> 
                             {{ day[0] }} / {{ day[1] }}  
-                            {% for i in range(day[-1] - day[-2]) %}
+                            {% for i in range(day[-1] - day[-2]+1) %}
                             
-                            <div class="hour_event border border-dark hour">
-                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="00" class="border minute min_box">
-                                    00
+                            <div class="hour_display">
+                                <div>
+                                    {{ hour.counter }}:00
                                 </div>
-                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" class="border minute min_box">
-                                    15
-                                </div>
-                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" class="border minute min_box">
-                                    30
-                                </div>
-                                <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" class="border minute min_box">
-                                    45
+                                <div class="hour_event border border-dark hour">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="00" hour="{{ hour.counter }}" class="border minute min_box">
+                                        00
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" class="border minute min_box">
+                                        15
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" class="border minute min_box">
+                                        30
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" class="border minute min_box">
+                                        45
+                                    </div>
+                                    {% set hour.counter = hour.counter + 1 %}
                                 </div>
                             </div>
                             
                         {% endfor %}   
-                        <!-- {% set ns.counter = ns.counter + 1 %}  -->
                         </div>
                     {% endfor %}
                 </div>

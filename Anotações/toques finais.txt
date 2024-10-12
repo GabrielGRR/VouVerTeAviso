@@ -1,8 +1,8 @@
 MVP!
 
 1. Crie uma grade de horários:
-   - Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
-   - Use uma tabela HTML ou divs para representar visualmente esses intervalos.
+   V Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
+   V Use uma tabela HTML ou divs para representar visualmente esses intervalos.
    - adicionar as horas ao lado da box de horários
 
 4. Armazene as seleções:

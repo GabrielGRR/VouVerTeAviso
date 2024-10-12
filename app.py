@@ -99,10 +99,10 @@ def events(Id_event):
     result = cursor.execute(query).fetchall()
     
     #se não tiver dias marcados no calendário
+    #acredito que isto não está funcionando, entender o pq dps
     if not result:
         print('fedorento deu submit vazio')
         return redirect(url_for('index'))
-    #apagar dps (só sincronizar github)
 
     print(type(result[0][-1]))
     # if not isinstance(result[0][-1], int):
@@ -110,7 +110,8 @@ def events(Id_event):
     #     result[0][-1] = 12
     #     result[0][-2] = 18
     connection.close() #talvez seja desnecessário
-    return render_template('event.html', Id_event = Id_event, days_list = result )
+    print(result)
+    return render_template('event.html', Id_event = Id_event, event_data = result )
 
 if __name__ == '__main__':
     app.run(debug=True)
