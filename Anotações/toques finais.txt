@@ -1,5 +1,7 @@
 MVP!
 
+fazer por hour_chunk, igual no print
+
 4. Armazene as seleções:
    ? o que indicaria quais intervalos irão para o DB são as classes selecionadas?
    - adicionar um botão para guardar os valores com as classes específicas ativadas
@@ -14,6 +16,8 @@ atualizar index.html div 2 com as mesmas classes do event.html (as horas)
 terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
 *Depois
+
+corrigir ordem que os dias aparecem (Se clicar fora de ordem, vai do jeito que clicou)
 
 avaliar necessidade dos minutos na pagina index
 
