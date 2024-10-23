@@ -1,7 +1,5 @@
 MVP!
 
-fazer por hour_chunk, igual no print
-
 4. Armazene as seleções:
    ? o que indicaria quais intervalos irão para o DB são as classes selecionadas?
    - adicionar um botão para guardar os valores com as classes específicas ativadas
@@ -73,3 +71,5 @@ adicionar extended templates?
    V Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
    V Use uma tabela HTML ou divs para representar visualmente esses intervalos.
    V adicionar as horas ao lado da box de horários
+   
+fazer por hour_chunk, igual no print
