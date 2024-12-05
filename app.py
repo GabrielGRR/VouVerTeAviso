@@ -2,7 +2,7 @@ from datetime import datetime
 #import pytz
 #import urllib
 #import calendar
-from calendar_logic import first_month, add_month, month_headers, month_belong_to_day #importando as funções do meu arquivo helpers.py
+from calendar_logic import first_month, add_month, month_headers, month_belong_to_day
 import sqlite3 as sql
 
 from flask import Flask, flash, redirect, render_template, g, request, jsonify, url_for 

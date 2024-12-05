@@ -13,6 +13,8 @@ atualizar index.html div 2 com as mesmas classes do event.html (as horas)
 
 terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
+corrigir left panel em event.html
+
 *Depois
 
 corrigir ordem que os dias aparecem (Se clicar fora de ordem, vai do jeito que clicou)
@@ -49,6 +51,11 @@ mudar valor do select de default 12 e 18 (hour_1 e hour_2)
 
 
 -talvez?
+
+MUI react
+
+AXIOS
+
 ver com a turma o que faz sentido ficar do lado do servidor e o que deveria ser cliente
 
 adicionar doação ou ad?
