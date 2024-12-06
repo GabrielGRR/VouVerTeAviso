@@ -1,13 +1,14 @@
 MVP!
 
 4. Armazene as seleções:
-   ? o que indicaria quais intervalos irão para o DB são as classes selecionadas?
-   - adicionar um botão para guardar os valores com as classes específicas ativadas
-   - adicionar forms para gravar o nome do evento (colocar tudo em forms?)
-   !- arrumar o JSON
-   - O usuario ao apertar o botão, atualizar as estruturas
+   V o que indicaria quais intervalos irão para o DB são as classes selecionadas?
+   V adicionar um botão para guardar os valores com as classes específicas ativadas
+   V arrumar o JSON
+   - Configurar corretamente o BD no backend
 
 8. Adicione feedback visual:
+   - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
+   - O usuario ao apertar o botão, atualizar as estruturas
    - Mostre ao usuário que suas seleções foram salvas com sucesso.
 
 ?. Tentar embelezar o site com bootstrap ou sei lá
