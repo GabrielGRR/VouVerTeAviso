@@ -117,47 +117,53 @@ def events(Id_event):
 ############## mexer neste código
 #Rota acessada para criar evento e processar dados
 @app.route('/user-data', methods=["POST", "GET"])
-def process_data():
+def user_event():
     if request.method == "POST":
-        connection = sql.connect('events_db.db')
-        cursor = connection.cursor() 
-        #coletando dados do JSON, o formato é em DICT{'days_array': [['24', 'Jul'], ['31', 'Jul']], 'event_min_hour': '4', 
-        # 'event_min_minute': '50', 'event_max_hour': '7', 'event_max_minute': '50', 'event_name': 'ssss'}
-        
+        # connection = sql.connect('events_db.db')
+        # cursor = connection.cursor() 
+        # # var user_data = {
+        #     "user_name": "teste",
+        #     "id_event": window.location.pathname.slice(1),
+        #     "user_times": user_available_times_array
+        # }
+
         data_package = request.get_json()
-        event_name = data_package.get('event_name')
-        execute_command = "INSERT INTO event(Event) VALUES(?)"
-        cursor.execute(execute_command, [event_name])
-        connection.commit()
+        user_name = data_package.get('user_name')
+        id_event = data_package.get('id_event')
+        user_times = data_package.get('user_times')
+        
+        # execute_command = "INSERT INTO event(Event) VALUES(?)"
+        # cursor.execute(execute_command, [event_name])
+        # connection.commit()
 
         #agora é adicionado outras informações, como horário mínimo e máximo e linkando ao ID único do evento
-        execute_command = """INSERT INTO event_days_hours(
-        Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute
-        ) VALUES(?, ?, ?, ?, ?, ?, ?)"""
+        # execute_command = """INSERT INTO event_days_hours(
+        # Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute
+        # ) VALUES(?, ?, ?, ?, ?, ?, ?)"""
 
-        Id_event = cursor.lastrowid
+        # Id_event = cursor.lastrowid
 
-        days_array = data_package.get('days_array')
+        # days_array = data_package.get('days_array')
 
-        for i in range(len(days_array)):
-            Day = days_array[i][0]
-            Month = days_array[i][1]
+        # for i in range(len(days_array)):
+        #     Day = days_array[i][0]
+        #     Month = days_array[i][1]
 
-            #possivelmente terei de escalar este código ao incluir horários individuais dos dias de evento
+        #     #possivelmente terei de escalar este código ao incluir horários individuais dos dias de evento
             
-            Event_min_hour = data_package.get('event_min_hour')
-            Event_min_minute = data_package.get('event_min_minute')
-            Event_max_hour = data_package.get('event_max_hour')
-            Event_max_minute = data_package.get('event_max_minute')
-            cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
-                                            Event_min_minute, Event_max_hour, Event_max_minute])
-            connection.commit()
+        #     Event_min_hour = data_package.get('event_min_hour')
+        #     Event_min_minute = data_package.get('event_min_minute')
+        #     Event_max_hour = data_package.get('event_max_hour')
+        #     Event_max_minute = data_package.get('event_max_minute')
+        #     cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
+        #                                     Event_min_minute, Event_max_hour, Event_max_minute])
+        #     connection.commit()
 
         print(data_package)
 
-        connection.close()   
-        return jsonify({"url": f"/{Id_event}", 
-                        "Id_event": Id_event
+        # connection.close()   
+        return jsonify({"url": f"/{id_event}", 
+                        "Id_event": id_event
                         })
 
     #aqui com certeza tem problema
