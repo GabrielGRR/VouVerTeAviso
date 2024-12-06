@@ -47,47 +47,30 @@ function add_user_times_to_db(){
     
     console.log(user_available_times_array);
 
+    // arquivo json
+    var user_data = {
+        "user_name": "teste", // --------- adicionar funcionalidade dps
+        "id_event": window.location.pathname.slice(1),
+        "user_times": user_available_times_array
+    }
 
+    console.log(user_data)
 
-    // Coleta os dados do formulário
-    const data = new FormData(evento.target);
-    const event_min_hour = data.get("hour_1");
-    const event_min_minute = data.get("min_1");
-    const event_max_hour = data.get("hour_2");
-    const event_max_minute = data.get("min_2");
-    const event_name = data.get("event_name");
-
-    // Envia a solicitação HTTP usando fetch
-    fetch('/user-data', { 
-        method: 'POST', 
-        headers: { 
-            'Content-Type': 'application/json'
-        }, 
-        body: JSON.stringify({
-            user_available_times_array, 
-            event_min_hour, 
-            event_min_minute, 
-            event_max_hour, 
-            event_max_minute, 
-            event_name
-        }) 
+    fetch('/user-data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Definindo o tipo de conteúdo como JSON
+        },
+        body: JSON.stringify(user_data) // Convertendo o objeto para JSON
     })
     .then(response => {
-        // Verifica se a resposta foi bem-sucedida
-        if (!response.ok) {
-            throw new Error('Erro na resposta do servidor');
-        }
-        // Converte a resposta para JSON
-        return response.json();
+        if (response.ok){
+            // window.location.reload(true);
+        }})
+    .then(data => {
+        console.log('Sucesso:', data); // A resposta do servidor
     })
-    .then(result => {
-        // Lida com o resultado da resposta
-        console.log('Sucesso:', result);
-        // location.reload();
-    })
-    .catch(error => {
-        // Lida com qualquer erro que ocorreu durante a solicitação
-        console.error('Erro:', error);
-    });
-    
-};
+    .catch((error) => {
+        console.error('Erro:', error); // Se ocorrer algum erro
+    });    
+}
