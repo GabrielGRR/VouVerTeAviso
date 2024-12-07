@@ -38,8 +38,8 @@ function add_user_times_to_db(){
     
     box_divs.forEach(function(element) {
         if (element.getAttribute('selected') === 'true') {
-            const day = element.getAttribute('day');
             const month = element.getAttribute('month');
+            const day = element.getAttribute('day');
             const hour = element.getAttribute('hour');
             const min = element.getAttribute('minute');
             user_available_times_array.push([String(day), String(month), String(hour), String(min)])
