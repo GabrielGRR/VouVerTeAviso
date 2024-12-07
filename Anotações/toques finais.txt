@@ -1,11 +1,5 @@
 MVP!
 
-4. Armazene as seleções:
-   V o que indicaria quais intervalos irão para o DB são as classes selecionadas?
-   V adicionar um botão para guardar os valores com as classes específicas ativadas
-   V arrumar o JSON
-   - Configurar corretamente o BD no backend
-
 8. Adicione feedback visual:
    - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
    - O usuario ao apertar o botão, atualizar as estruturas
@@ -20,7 +14,7 @@ corrigir left panel em event.html
 
 *Depois
 
-corrigir ordem que os dias aparecem (Se clicar fora de ordem, vai do jeito que clicou)
+Filtrar os dias primeiro por Ano, depois mês, depois dia
 
 avaliar necessidade dos minutos na pagina index
 
@@ -83,3 +77,10 @@ adicionar extended templates?
    V adicionar as horas ao lado da box de horários
    
 fazer por hour_chunk, igual no print
+
+4. Armazene as seleções:
+   V o que indicaria quais intervalos irão para o DB são as classes selecionadas?
+   V adicionar um botão para guardar os valores com as classes específicas ativadas
+   V arrumar o JSON
+   V Configurar corretamente o BD no backend
+   V corrigir ordem dos meses no right panel do evento
