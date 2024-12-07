@@ -53,7 +53,7 @@ def process_data():
         connection.commit()
 
         #agora é adicionado outras informações, como horário mínimo e máximo e linkando ao ID único do evento
-        execute_command = """INSERT INTO event_days_hours(
+        execute_command = """INSERT INTO event_time(
         Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute
         ) VALUES(?, ?, ?, ?, ?, ?, ?)"""
 
@@ -61,6 +61,7 @@ def process_data():
 
         days_array = data_package.get('days_array')
 
+        print(data_package)
         for i in range(len(days_array)):
             Day = days_array[i][0]
             Month = days_array[i][1]
@@ -73,9 +74,7 @@ def process_data():
             Event_max_minute = data_package.get('event_max_minute')
             cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
                                             Event_min_minute, Event_max_hour, Event_max_minute])
-            connection.commit()
-
-        print(data_package)
+        connection.commit()
 
         connection.close()   
         return jsonify({"url": f"/{Id_event}", 
@@ -95,9 +94,10 @@ def events(Id_event):
     #cria conexão com o BD
     connection = sql.connect('events_db.db')
     cursor = connection.cursor()
-    query = f"select Day, Month, Event_min_hour, Event_max_hour from event_days_hours where Id_event = {Id_event};"
+    query = f"select Day, Month, Event_min_hour, Event_max_hour from event_time where Id_event = {Id_event} order by Day;"
     result = cursor.execute(query).fetchall()
     
+    print(result)
     #se não tiver dias marcados no calendário
     #acredito que isto não está funcionando, entender o pq dps
     if not result:
@@ -119,49 +119,28 @@ def events(Id_event):
 @app.route('/user-data', methods=["POST", "GET"])
 def user_event():
     if request.method == "POST":
-        # connection = sql.connect('events_db.db')
-        # cursor = connection.cursor() 
-        # # var user_data = {
-        #     "user_name": "teste",
-        #     "id_event": window.location.pathname.slice(1),
-        #     "user_times": user_available_times_array
-        # }
+
+        # json output: {'user_name': 'teste', 'id_event': '196', 'user_times': [['10', 'Out', '15', '00'], ['10', 'Out', '15', '45'], ['10', 'Out', '17', '45'], ['8', 'Out', '16', '00'], ['8', 'Out', '17', '00']]}
 
         data_package = request.get_json()
         user_name = data_package.get('user_name')
         id_event = data_package.get('id_event')
         user_times = data_package.get('user_times')
-        
-        # execute_command = "INSERT INTO event(Event) VALUES(?)"
-        # cursor.execute(execute_command, [event_name])
-        # connection.commit()
 
-        #agora é adicionado outras informações, como horário mínimo e máximo e linkando ao ID único do evento
-        # execute_command = """INSERT INTO event_days_hours(
-        # Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute
-        # ) VALUES(?, ?, ?, ?, ?, ?, ?)"""
-
-        # Id_event = cursor.lastrowid
-
-        # days_array = data_package.get('days_array')
-
-        # for i in range(len(days_array)):
-        #     Day = days_array[i][0]
-        #     Month = days_array[i][1]
-
-        #     #possivelmente terei de escalar este código ao incluir horários individuais dos dias de evento
-            
-        #     Event_min_hour = data_package.get('event_min_hour')
-        #     Event_min_minute = data_package.get('event_min_minute')
-        #     Event_max_hour = data_package.get('event_max_hour')
-        #     Event_max_minute = data_package.get('event_max_minute')
-        #     cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
-        #                                     Event_min_minute, Event_max_hour, Event_max_minute])
-        #     connection.commit()
+        # não esquecer de converter user_hour e user_min para int
 
         print(data_package)
+        print(user_name,id_event,user_times)
 
-        # connection.close()   
+        connection = sql.connect('events_db.db')
+        cursor = connection.cursor()         
+        execute_command = "INSERT INTO users_time(Id_event, User_name, User_month, User_day, User_hour, User_minute) VALUES(?,?,?,?,?,?)"
+        for time in user_times:
+            cursor.execute(execute_command, [id_event, user_name, time[0], time[1], time[2], time[3]])
+
+        connection.commit()
+        connection.close()
+
         return jsonify({"url": f"/{id_event}", 
                         "Id_event": id_event
                         })
