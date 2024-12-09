@@ -85,7 +85,13 @@ let teste1_color = window.getComputedStyle(teste1_element).backgroundColor;
 // linear shading, se eu usar teste1_color ficará logarítmica 
 const original_color = teste1_color
 
-var percent = 100/3;
+// caso a pessoa adicionar +1 no dia com máximo de pessoas, refazer a conta
+var max_users = 3
+
+var percent = 100/max_users;
+
+// var div_color = percent * current_users
+// ou percent - 100 * current_users, algo do tipo
 
 // Clareia a cor de uma div
 function shadeRGBColor() {
@@ -102,6 +108,7 @@ function shadeRGBColor() {
 
     document.getElementById("teste1").style.backgroundColor = "rgb(" + newR + "," + newG + "," + newB + ")";
     teste1_color = document.getElementById("teste1").style.backgroundColor;
-    percent+=20;
+    percent+=percent;
+    
     console.log(teste1_color)
 }
