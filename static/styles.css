@@ -11,7 +11,7 @@
 
 .div1 {
   flex: 2; /* 4 partes */
-  background-color: lightblue;
+  background-color: rgb(173, 216, 230);
   text-align: center;
   .scrollspy-example{overflow: scroll; max-height: 300px; overflow-x: hidden};
 }
