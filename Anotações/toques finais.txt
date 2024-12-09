@@ -16,6 +16,8 @@ corrigir left panel em event.html
 
 Filtrar os dias primeiro por Ano, depois mês, depois dia
 
+adicionar régua de temperatura de qtd de pessoas
+
 avaliar necessidade dos minutos na pagina index
 
 2. Implemente a interação de clique e arrasto:
