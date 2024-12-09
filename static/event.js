@@ -73,4 +73,35 @@ function add_user_times_to_db(){
     .catch((error) => {
         console.error('Erro:', error); // Se ocorrer algum erro
     });    
+};
+
+
+// como terá uma 'régua' mostrando a quantidade de pessoas por dia, mudar para valor full
+// possivlmente terá um loop criando divs dentro do display flex da régua
+// deixar salvo a cor "máxima", ir aumentando percent
+teste1_element = document.getElementById("teste1");
+let teste1_color = window.getComputedStyle(teste1_element).backgroundColor;
+
+// linear shading, se eu usar teste1_color ficará logarítmica 
+const original_color = teste1_color
+
+var percent = 100/3;
+
+// Clareia a cor de uma div
+function shadeRGBColor() {
+    var f = original_color.slice(4, -1).split(","), 
+        t = percent < 0 ? 0 : 255, 
+        p = percent < 0 ? percent * -1 : percent, 
+        R = parseInt(f[0]), 
+        G = parseInt(f[1]), 
+        B = parseInt(f[2]);
+
+    var newR = Math.round((t - R) * (p / 100)) + R;
+    var newG = Math.round((t - G) * (p / 100)) + G;
+    var newB = Math.round((t - B) * (p / 100)) + B;
+
+    document.getElementById("teste1").style.backgroundColor = "rgb(" + newR + "," + newG + "," + newB + ")";
+    teste1_color = document.getElementById("teste1").style.backgroundColor;
+    percent+=20;
+    console.log(teste1_color)
 }
