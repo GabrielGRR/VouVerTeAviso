@@ -96,6 +96,9 @@ def events(Id_event):
     cursor = connection.cursor()
     query = f"select Day, Month, Event_min_hour, Event_max_hour from event_time where Id_event = {Id_event} order by Day;"
     result = cursor.execute(query).fetchall()
+
+    # filtrar por ano > mês > Dia 
+    # pytz e month_monthlist
     
     print(result)
     #se não tiver dias marcados no calendário
@@ -113,9 +116,7 @@ def events(Id_event):
     print(result)
     return render_template('event.html', Id_event = Id_event, event_data = result )
 
-
-############## mexer neste código
-#Rota acessada para criar evento e processar dados
+# Enviar para o BD informações do usuário
 @app.route('/user-data', methods=["POST", "GET"])
 def user_event():
     if request.method == "POST":
