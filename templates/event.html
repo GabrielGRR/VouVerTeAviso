@@ -44,10 +44,7 @@
     <main>
         <div class="div_container">
             <!-- Div 1 -->
-            <div id="teste1" class="div1">
-                <button id="color_test" onclick="shadeRGBColor()">Mudar cor</button>
 
-            </div>
 
             <!-- Div 2 -->
             <div class="div2">
@@ -123,6 +120,83 @@
                 </div>
 
                 <button id="add_hrs_db" onclick="add_user_times_to_db()">Add disponibilidade</button>
+            </div>
+
+            <!-- RIGHT PANEL -->
+            <div id="teste1" class="div1">
+
+                <div class="days-event-container">
+
+                    {% for day in event_data[:1] %}
+                        {% set hour = namespace(counter=day[2]) %}
+                        <div class="days_hours_blocks"> 
+                            <div class="date_text">
+                                {{ day[0] }} / {{ day[1] }}
+                            </div>
+                            
+                            {% for i in range(day[3] - day[2]+1) %}
+                            
+                            <div class="hour_display">
+                                <div>
+                                    {{ hour.counter }}:00
+                                </div>
+                                <div class="hour_event border border-dark hour">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="00" hour="{{ hour.counter }}" class="border minute">
+                                        00
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" class="border minute">
+                                        15
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" class="border minute">
+                                        30
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" class="border minute">
+                                        45
+                                    </div>
+                                    {% set hour.counter = hour.counter + 1 %}
+                                </div>
+                            </div>
+                            
+                        {% endfor %}   
+                        </div>
+                    {% endfor %} 
+
+
+                    {% if event_data | length > 1 %}
+                    {% for day in event_data[1:] %}
+                    {% set hour = namespace(counter=day[2]) %}
+                    <!--event_Data = [Day, Month, Event_min_hour, Event_max_hour]-->
+                        <div class="days_hours_blocks"> 
+                                {{ day[0] }} / {{ day[1] }}
+                            {% for i in range(day[3] - day[2]+1) %}
+                            
+                            <div class="hour_display">
+                            <!--esta div é apenas para alinhar os horários com o primeiro loop-->
+                                <div class="hour_event border border-dark hour">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="00" hour="{{ hour.counter }}" class="border minute">
+                                        00
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" class="border minute">
+                                        15
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" class="border minute">
+                                        30
+                                    </div>
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" class="border minute">
+                                        45
+                                    </div>
+                                    {% set hour.counter = hour.counter + 1 %}
+                                </div>
+                            </div>
+                            
+                        {% endfor %}   
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+                <button id="color_test" onclick="shadeRGBColor()">Mudar cor</button>
+
             </div>
     </main>
 

@@ -1,5 +1,13 @@
 MVP!
 
+v - Transferir para a esquerda aquela templates
+
+copiar o layout, mas que puxe do BD
+
+atualize com o que foi feito na esquerda
+
+adicionar progressão de cores
+
 8. Adicione feedback visual:
    - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
    - O usuario ao apertar o botão, atualizar as estruturas
