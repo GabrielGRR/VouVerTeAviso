@@ -3,10 +3,11 @@ MVP!
 v - Transferir para a esquerda aquela templates
 
 copiar o layout, mas que puxe do BD
-
-atualize com o que foi feito na esquerda
-
-adicionar progressão de cores
+   v copiar o layout
+   - mandar um json pro front com infos do BD
+   - alterar a cor das divs com as infos pertinentes
+   - chamar função mudar_cor *(max-n)
+   - alterar a cor de acordo com a quantidade de pessoas naquela mesma div
 
 8. Adicione feedback visual:
    - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
