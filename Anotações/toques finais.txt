@@ -1,17 +1,18 @@
 MVP!
 
-v - Transferir para a esquerda aquela templates
-
 copiar o layout, mas que puxe do BD
    v copiar o layout
-   - mandar um json pro front com infos do BD
-   - alterar a cor das divs com as infos pertinentes
-   - chamar função mudar_cor *(max-n)
-   - alterar a cor de acordo com a quantidade de pessoas naquela mesma div
+   v mandar um json pro front com infos do BD
+   - fazer um loop que
+      - compara os atributos da div com elemento[i] do json, se for compatível, str(int(user_quantity)++)
+      - adicionar uma variavel max_users no js que compara com user_quantity em cada loop
+   - definir cor cheia
+   - chamar função mudar_cor *(max_users-users_quantity)
+      - alterar a cor de acordo com a quantidade de pessoas naquela mesma div
 
 8. Adicione feedback visual:
    - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
-   - O usuario ao apertar o botão, atualizar as estruturas
+   - O usuario ao apertar o botão, atualizar as estruturas (tem um comando de recarregar pagina comentado em algum lugar)
    - Mostre ao usuário que suas seleções foram salvas com sucesso.
 
 ?. Tentar embelezar o site com bootstrap ou sei lá
@@ -20,6 +21,8 @@ atualizar index.html div 2 com as mesmas classes do event.html (as horas)
 terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
 corrigir left panel em event.html
+
+
 
 *Depois
 
@@ -95,3 +98,5 @@ fazer por hour_chunk, igual no print
    V arrumar o JSON
    V Configurar corretamente o BD no backend
    V corrigir ordem dos meses no right panel do evento
+
+v - Transferir para a esquerda aquela templates
