@@ -94,8 +94,8 @@ def events(Id_event):
     #cria conexão com o BD
     connection = sql.connect('events_db.db')
     cursor = connection.cursor()
-    query = f"select Day, Month, Event_min_hour, Event_max_hour from event_time where Id_event = {Id_event} order by Day;"
-    result = cursor.execute(query).fetchall()
+    event_query = f"select Day, Month, Event_min_hour, Event_max_hour from event_time where Id_event = {Id_event} order by Day;"
+    result = cursor.execute(event_query).fetchall()
 
     # filtrar por ano > mês > Dia 
     # pytz e month_monthlist
@@ -112,9 +112,14 @@ def events(Id_event):
     #     print('is not int')
     #     result[0][-1] = 12
     #     result[0][-2] = 18
+
+    users_query = f"select User_name, User_month, User_day, User_hour, User_minute from users_time where Id_event = {Id_event};"
+    users_result = cursor.execute(users_query).fetchall()
+    print(users_result)
+
     connection.close() #talvez seja desnecessário
     print(result)
-    return render_template('event.html', Id_event = Id_event, event_data = result )
+    return render_template('event.html', Id_event = Id_event, event_data = result, users_result = users_result )
 
 # Enviar para o BD informações do usuário
 @app.route('/user-data', methods=["POST", "GET"])
@@ -143,8 +148,7 @@ def user_event():
         connection.close()
 
         return jsonify({"url": f"/{id_event}", 
-                        "Id_event": id_event
-                        })
+                        "Id_event": id_event})
 
     #aqui com certeza tem problema
     else:
