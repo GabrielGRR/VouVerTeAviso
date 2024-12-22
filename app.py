@@ -140,6 +140,7 @@ def user_event():
         execute_command = "INSERT INTO users_time(Id_event, User_name, User_month, User_day, User_hour, User_minute) VALUES(?,?,?,?,?,?)"
         for time in user_times:
             cursor.execute(execute_command, [id_event, user_name, time[0], time[1], time[2], time[3]])
+            print(id_event, user_name, time[0], time[1], time[2], time[3])
 
         connection.commit()
         connection.close()
@@ -150,7 +151,7 @@ def user_event():
     else:
         print("Você tentou acessar diretamente pelo método GET")
 
-#Enviar para o evento informações do BD
+# Enviar para o evento informações do BD
 @app.route('/get_users-time', methods=["POST", "GET"])
 def get_users_time():
     Id_event = request.args.get('Id_event')
@@ -161,7 +162,19 @@ def get_users_time():
         users_result = cursor.execute(users_query, (Id_event,)).fetchall()
         connection.close()
 
-        return jsonify(users_result)
+        # Converte o resultado para uma lista de dicionários
+        users_list = []
+        for row in users_result:
+            user_dict = {
+                "User_name": row[0],
+                "User_month": row[1],
+                "User_day": row[2],
+                "User_hour": row[3],
+                "User_minute": row[4]
+            }
+            users_list.append(user_dict)
+
+        return jsonify(users_list)
     else:
         return jsonify({"error": "Id_event parameter is required"}), 400
 
