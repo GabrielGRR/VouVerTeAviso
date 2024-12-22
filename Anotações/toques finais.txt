@@ -1,14 +1,6 @@
 MVP!
 
-copiar o layout, mas que puxe do BD
-   v copiar o layout
-   v mandar um json pro front com infos do BD
-   - fazer um loop que
-      - compara os atributos da div com elemento[i] do json, se for compatível, str(int(user_quantity)++)
-      - adicionar uma variavel max_users no js que compara com user_quantity em cada loop
-   - definir cor cheia
-   - chamar função mudar_cor *(max_users-users_quantity)
-      - alterar a cor de acordo com a quantidade de pessoas naquela mesma div
+definir todo o BD como text?
 
 8. Adicione feedback visual:
    - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
@@ -22,6 +14,7 @@ terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
 corrigir left panel em event.html
 
+limpar os console.log
 
 
 *Depois
@@ -31,6 +24,8 @@ Filtrar os dias primeiro por Ano, depois mês, depois dia
 adicionar régua de temperatura de qtd de pessoas
 
 avaliar necessidade dos minutos na pagina index
+
+os dias selecionados fora de ordem, tem que estar em ordem na home
 
 2. Implemente a interação de clique e arrasto:
    - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).
@@ -100,3 +95,14 @@ fazer por hour_chunk, igual no print
    V corrigir ordem dos meses no right panel do evento
 
 v - Transferir para a esquerda aquela templates
+
+
+copiar o layout, mas que puxe do BD
+   v copiar o layout
+   v mandar um json pro front com infos do BD
+   v fazer um loop que
+      v compara os atributos da div com elemento[i] do json, se for compatível, str(int(user_quantity)++)
+      v adicionar uma variavel max_users no js que compara com user_quantity em cada loop
+   v definir cor cheia
+   v chamar função mudar_cor *(max_users-users_quantity)
+      v alterar a cor de acordo com a quantidade de pessoas naquela mesma div
