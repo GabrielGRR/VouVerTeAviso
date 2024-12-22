@@ -21,7 +21,7 @@ excl_months, bool_list = month_headers()
 month_of_the_day = month_belong_to_day()
 num_rows = len(month_monthlist)
 
-#Inicialização do get_event_name
+#Inicialização da home
 @app.route('/', methods=["POST","GET"])
 def index():
     calendar_header = ['semana', 'D','S','T','Q','Q','S','S'] #ano tbm?
@@ -81,14 +81,10 @@ def process_data():
                         "Id_event": Id_event
                         })
 
-    #aqui com certeza tem problema
     else:
-        print("deu ruim")
-        if request.method == "GET":
-            return "Você tentou acessar diretamente pelo método GET"
-        else:
-            return "Falhou em alguma outra etapa"
+        print("Você tentou acessar diretamente pelo método GET")
 
+#Rota do evento
 @app.route('/<int:Id_event>', methods=["POST", "GET"])
 def events(Id_event):
     #cria conexão com o BD
@@ -103,6 +99,7 @@ def events(Id_event):
     print(result)
     #se não tiver dias marcados no calendário
     #acredito que isto não está funcionando, entender o pq dps
+    #provavelmente lidar com isso via JS ou html de não deixar ele dar submit vazio
     if not result:
         print('fedorento deu submit vazio')
         return redirect(url_for('index'))
@@ -121,7 +118,7 @@ def events(Id_event):
     print(result)
     return render_template('event.html', Id_event = Id_event, event_data = result, users_result = users_result )
 
-# Enviar para o BD informações do usuário
+#Enviar para o BD informações do usuário
 @app.route('/user-data', methods=["POST", "GET"])
 def user_event():
     if request.method == "POST":
@@ -150,13 +147,23 @@ def user_event():
         return jsonify({"url": f"/{id_event}", 
                         "Id_event": id_event})
 
-    #aqui com certeza tem problema
     else:
-        print("deu ruim")
-        if request.method == "GET":
-            return "Você tentou acessar diretamente pelo método GET"
-        else:
-            return "Falhou em alguma outra etapa"
+        print("Você tentou acessar diretamente pelo método GET")
+
+#Enviar para o evento informações do BD
+@app.route('/get_users-time', methods=["POST", "GET"])
+def get_users_time():
+    Id_event = request.args.get('Id_event')
+    if Id_event:
+        connection = sql.connect('events_db.db')
+        cursor = connection.cursor()
+        users_query = "SELECT User_name, User_month, User_day, User_hour, User_minute FROM users_time WHERE Id_event = ?;"
+        users_result = cursor.execute(users_query, (Id_event,)).fetchall()
+        connection.close()
+
+        return jsonify(users_result)
+    else:
+        return jsonify({"error": "Id_event parameter is required"}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
