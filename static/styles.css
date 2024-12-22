@@ -11,7 +11,7 @@
 
 .div1 {
   flex: 2; /* 4 partes */
-  background-color: rgb(173, 216, 230);
+  /* background-color: rgb(173, 216, 230); */
   text-align: center;
   .scrollspy-example{overflow: scroll; max-height: 300px; overflow-x: hidden};
 }
@@ -126,7 +126,7 @@
 
 .minute{
   width: 58px;
-  background-color: rgba(165, 42, 42, 0.479);
+  /* background-color: rgba(112, 112, 112, 0.219); */
 }
 
 .hour_selected {
