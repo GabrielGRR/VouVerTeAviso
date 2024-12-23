@@ -1,29 +1,37 @@
 MVP!
 
-definir todo o BD como text?
-
 8. Adicione feedback visual:
    - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
-   - O usuario ao apertar o botão, atualizar as estruturas (tem um comando de recarregar pagina comentado em algum lugar)
-   - Mostre ao usuário que suas seleções foram salvas com sucesso.
+   v O usuario ao apertar o botão, atualizar as estruturas (tem um comando de recarregar pagina comentado em algum lugar)
 
 ?. Tentar embelezar o site com bootstrap ou sei lá
 atualizar index.html div 2 com as mesmas classes do event.html (as horas)
 
 terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
-corrigir left panel em event.html
+corrigir left panel em event.html?
+
+limpar dados errôneos do bd, provavelmente
 
 limpar os console.log
 
-
 *Depois
+
+definir todo o BD como text?
+
+corrigir tamanho dos panels
+
+responsividade?
+
+dar uma olhada no caos que deve estar o .css
 
 Filtrar os dias primeiro por Ano, depois mês, depois dia
 
 adicionar régua de temperatura de qtd de pessoas
 
 avaliar necessidade dos minutos na pagina index
+
+Mostre ao usuário que suas seleções foram salvas com sucesso.
 
 os dias selecionados fora de ordem, tem que estar em ordem na home
 
