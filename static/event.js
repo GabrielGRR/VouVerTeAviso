@@ -65,7 +65,7 @@ function add_user_times_to_db(){
     })
     .then(response => {
         if (response.ok){
-            // window.location.reload(true);
+            window.location.reload(true);
         }})
     .then(data => {
         console.log('Sucesso:', data); // A resposta do servidor

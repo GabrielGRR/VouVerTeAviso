@@ -57,7 +57,7 @@
 
 .div2 {
   flex: 2; /* 2 parte */
-  background-color: rgb(193, 236, 193);
+  /* background-color: rgb(193, 236, 193); */
   text-align: center;
   height: fit-content
 }
