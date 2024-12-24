@@ -134,7 +134,7 @@ function populate_colors_on_divs(){
     users_divs.forEach(function(element){
         let users_quantity = Number(element.getAttribute('users_quantity'))
         if (users_quantity > 0) {
-            element.style.backgroundColor =  'rgb(51, 153, 0)';
+            element.style.backgroundColor = original_color;
             let shade_amount = max_users-users_quantity;
             let local_percent = 100/max_users;
             for(let i=0;i<shade_amount;i++){
@@ -173,7 +173,7 @@ function shadeRGBColor_div(div_element, difference) {
 // let teste1_color = window.getComputedStyle(teste1_element).backgroundColor;
 
 // linear shading, se eu usar teste1_color ficará logarítmica 
-const original_color = 'rgb(51, 153, 0)';
+const original_color = 'rgb(80, 200, 120)';
 // document.getElementById("teste1").style.backgroundColor = original_color;
 
 // caso a pessoa adicionar +1 no dia com máximo de pessoas, refazer a conta

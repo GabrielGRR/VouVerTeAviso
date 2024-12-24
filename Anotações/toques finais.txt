@@ -1,21 +1,54 @@
 MVP!
 
-8. Adicione feedback visual:
-   - adicionar forms para gravar o nome do evento (colocar tudo em forms?)   
-   v O usuario ao apertar o botão, atualizar as estruturas (tem um comando de recarregar pagina comentado em algum lugar)
+Home:
+   - retirar botão da home 
+   - retirar os "hours test"
+   - apagar js de hour test
+   - dar uma silhueta ao site (dar espaçamento lateral - centralizar as infos)
+   - alinhar 'header' dos dias da semana DSTQQSS
+   - centralizar nome do evento
+   - remover primeiro lorem ipsum
+   div lateral:
+      - adicionar div horário de início/fim
+      - Adicionar botão(-) / input / botão(+)
+      - Adicionar botão (+15 min) / botão(-15 min)
+      - adicionar JS para mudar valores
+      - repetir abaixo mas para hora final
+      - adicionar botão criar evento
+   - atualizar paleta de cores
 
-?. Tentar embelezar o site com bootstrap ou sei lá
-atualizar index.html div 2 com as mesmas classes do event.html (as horas)
-
-terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
-
-corrigir left panel em event.html?
-
-limpar dados errôneos do bd, provavelmente
+event:
+   - retirar botão 'mudar cor'
+   - retirar códigos inúteis do mudar cor
+   - adicionar div do meio:
+      - Div título com nome do evento
+      - div com régua de cores
+      - adicionar nome do usuário atual:
+         - esconder div lateral enquanto nome não for preenchido
+         - mostrar form com o nomes enquanto o nome não for preenchido
+         - esconder forms com o nome quando preenchido
+         - salvar numa variavel local o nome do meliante
+         - integrar ao fetch o nome da pessoa
+      - div com mouse event dos integrantes daquele horário:
+         - salvar um dicionário com o id da div?
+         - adicionar no loop de users_quantity o valor ao dicionário
+         - evento de mouse para acionar evento  
+         - função que cria as div com os usuários daquele horário
+         - ao sair do evento, pensar em algo para cancelar a função ou apagar as divs (while hover?) 
+   - atualizar paleta de cores
 
 limpar os console.log
 
+terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
+
+
+
+
 *Depois
+
+corrigir left panel em event.html?
+
+modernizar add nome do evento
 
 definir todo o BD como text?
 
@@ -34,6 +67,8 @@ avaliar necessidade dos minutos na pagina index
 Mostre ao usuário que suas seleções foram salvas com sucesso.
 
 os dias selecionados fora de ordem, tem que estar em ordem na home
+
+mostrar dia numa outra div logo abaixo da do meio, onde mostra o dia que mais pessoas irão
 
 2. Implemente a interação de clique e arrasto:
    - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).
@@ -114,3 +149,5 @@ copiar o layout, mas que puxe do BD
    v definir cor cheia
    v chamar função mudar_cor *(max_users-users_quantity)
       v alterar a cor de acordo com a quantidade de pessoas naquela mesma div
+
+v limpar dados errôneos do bd, provavelmente
