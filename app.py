@@ -24,11 +24,9 @@ num_rows = len(month_monthlist)
 #Inicialização da home
 @app.route('/', methods=["POST","GET"])
 def index():
-    calendar_header = ['semana', 'D','S','T','Q','Q','S','S'] #ano tbm?
 
     return render_template('index.html', 
                            num_rows= num_rows, 
-                           calendar_header= calendar_header, 
                            monthlist = month_monthlist, 
                            weeklist = month_weekslist,
                            excl_months = excl_months,

@@ -1,21 +1,19 @@
 MVP!
 
 Home:
-   - retirar botão da home 
-   - retirar os "hours test"
-   - apagar js de hour test
-   - dar uma silhueta ao site (dar espaçamento lateral - centralizar as infos)
-   - alinhar 'header' dos dias da semana DSTQQSS
-   - centralizar nome do evento
-   - remover primeiro lorem ipsum
+   v retirar botão da home 
+   v retirar os "hours test"
+   v apagar js de hour test
+   v dar uma silhueta ao site (dar espaçamento lateral - centralizar as infos)
+   v alinhar 'header' dos dias da semana DSTQQSS
+   v centralizar nome do evento
+   v remover primeiro lorem ipsum
    div lateral:
-      - adicionar div horário de início/fim
-      - Adicionar botão(-) / input / botão(+)
-      - Adicionar botão (+15 min) / botão(-15 min)
-      - adicionar JS para mudar valores
-      - repetir abaixo mas para hora final
-      - adicionar botão criar evento
-   - atualizar paleta de cores
+      v adicionar div horário de início/fim
+      v repetir abaixo mas para hora final
+      v adicionar botão criar evento
+   v atualizar paleta de cores
+   v colocar required no input nome do evento
 
 event:
    - retirar botão 'mudar cor'
@@ -46,6 +44,8 @@ terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 
 *Depois
 
+adicionar um readme 
+
 corrigir left panel em event.html?
 
 modernizar add nome do evento
@@ -55,6 +55,11 @@ definir todo o BD como text?
 corrigir tamanho dos panels
 
 responsividade?
+
+div lateral:
+   - Adicionar botão(-) / input / botão(+)
+   - Adicionar botão (+15 min) / botão(-15 min)
+   - adicionar JS para mudar valores
 
 dar uma olhada no caos que deve estar o .css
 
@@ -69,6 +74,8 @@ Mostre ao usuário que suas seleções foram salvas com sucesso.
 os dias selecionados fora de ordem, tem que estar em ordem na home
 
 mostrar dia numa outra div logo abaixo da do meio, onde mostra o dia que mais pessoas irão
+
+se selecionar dia 30, 31 e 1, a ordem do evento fica como 1, 30, 31
 
 2. Implemente a interação de clique e arrasto:
    - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).

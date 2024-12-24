@@ -1,25 +1,53 @@
-.div_container {
-    display: flex;
-    width: 100%;
-    height: 100vh; /* Altura da tela inteira */
-    padding: 20px;
-}
-
 .paragraph-text{
     text-align: center;
 }
 
-.div1 {
-  flex: 2; /* 4 partes */
-  /* background-color: rgb(173, 216, 230); */
+.div_2 {
+  flex: 1;
   text-align: center;
-  .scrollspy-example{overflow: scroll; max-height: 300px; overflow-x: hidden};
+}
+
+.scrollspy-example{
+  overflow: scroll; 
+  max-height: 50vh; 
+  overflow-x: hidden;
+  background-color: #CEDF9F !important;
+}
+
+.select_time{
+  width:90px;
+  height:35px;
+  text-align:center;
+  background-color: #E8B86D;
+}
+
+.cabecalho{
+  background-color: #F1F3C2;
+}
+
+.p-3{
+  padding-top:0 !important;
+}
+
+.div_3{
+  flex:1;
+  display:flex;
+  flex-direction: column;
+}
+
+.main_container{
+  display:flex;
+  flex-direction: column;
+}
+
+.div_2_3_container{
+  display: flex;
+  flex-direction: row;
 }
 
 .form-group {
     margin: auto;
     width: fit-content;
-    background-color: aqua;
 }
 
 .form-group input {
@@ -40,13 +68,24 @@
   margin-bottom: 10px;
 }
 
+.dia_semana{
+  width:45px;
+  height:45px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 4px;
+  font-size:x-large;
+}
+
 .month {
   flex: 0 0 100px; /* Ajuste conforme necessário */
 }
 
 .days {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex: 1;
 }
 
@@ -55,19 +94,13 @@
   text-align: center;
 }
 
-.div2 {
-  flex: 2; /* 2 parte */
-  /* background-color: rgb(193, 236, 193); */
-  text-align: center;
-  height: fit-content
-}
-
 .btn-custom {
   transition: background-color 0.5s;
   width: 45px;
   height: 45px;
   padding: 0px;
   margin: 4px;
+  background-color: #A1D6B2;
 }
 .btn-custom.pressed {
   background-color: rgba(0, 0, 0, 0.700);
@@ -80,20 +113,25 @@
   justify-content: space-evenly;
 }
 
-.hour_form_container {
-  display:flex;
+.horario_evento{
+  display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.horario{
-  display: inline-block;
-  margin-bottom: 10px;
+.container_horarios{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .submit_button{
   text-align: center;
   margin: 10px;
+  flex: 1;
 }
 
 .hour{
@@ -148,4 +186,22 @@
 
 div {
   outline: 1px dashed blue; /* Dashed blue outline */
+}
+
+body, header, .navbar{
+  background-color: #CEDF9F !important;
+  color:black;
+}
+
+.active{
+  background-color: #E8B86D !important;
+  color:black !important;
+}
+
+.pressed{
+  background-color: #E8B86D !important;
+}
+
+.nav-link{
+  color:black;
 }

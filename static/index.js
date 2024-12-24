@@ -22,64 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
             if (button.getAttribute('aria-pressed') === 'true') {
                 button.setAttribute('aria-pressed', 'false');
                 button.classList.remove('pressed');
-                remove_DayFromContainer(day, month);
+                remove_day(day, month);
             } else {
                 button.setAttribute('aria-pressed', 'true');
                 button.classList.add('pressed');
-                add_day_hour_ToContainer(day, month, min_hour, max_hour);
+                add_day(day, month, min_hour, max_hour);
             }
         });
     });
 
-    // adicionar item no container
-    // mudar nome da função para add_day_hours_div
-    function add_day_hour_ToContainer(day, month, min_hour, max_hour) {
-
-        //div container principal:
-        //container
-        //div dia_mes
-        //div com horas
-        var container = document.getElementById('days-container');
-        var day_hour_div = document.createElement('div');
-        day_hour_div.setAttribute('id',`div_${div_num}`);
-        day_hour_div.setAttribute('data-day', day);
-        day_hour_div.setAttribute('data-month', month);
-        container.appendChild(day_hour_div)
-
-        var day_container = document.getElementById(`div_${div_num}`);
-        var novaDiv = document.createElement('div');
-        novaDiv.innerHTML = `Day ${day} month ${month}`;
-        novaDiv.setAttribute('data-day', day);
-        novaDiv.setAttribute('data-month', month);
-        day_container.appendChild(novaDiv);
-
-        //adicionar os dias e meses para uma lista que comunicará com o backend
+    function add_day(day, month, min_hour, max_hour) {
         days_array.push([String(day), String(month)])
-        console.log(days_array)
-
-        let hour = Number(min_hour);
-
-        while (hour <= max_hour) {
-            var hoursdiv = document.createElement('div');
-            hoursdiv.innerHTML = `hour test ${hour}`;
-            hoursdiv.setAttribute('data-day', day);
-            hoursdiv.setAttribute('data-month', month);
-            hoursdiv.setAttribute('hours-container', 'hours-container')
-            hoursdiv.setAttribute('class','border border-dark hour')
-            day_container.appendChild(hoursdiv);
-            hour++;
-        }
-        div_num++;
-        
     }
-
-    // retirar item do container
-    function remove_DayFromContainer(day, month) {
-        const days_hours_container = document.getElementById('days-container');
-        const day_hours_elements = days_hours_container.querySelectorAll(`div[data-day='${day}'][data-month='${month}']`);
-        days_hours_container.removeChild(day_hours_elements[0]); //remove a div_# inteira, por ser a pai, vai com todos os childs
-
-        //removendo os dias da lista que comunicará com o backend
+    function remove_day(day, month) {
         for (let i = days_array.length-1; i >= 0;i--){
             if (days_array[i][0] == String(day) && days_array[i][1] == String(month)){
                 days_array.splice(i,1);
@@ -134,39 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Erro:', error);
         });
     });
-
-    // // Checar se o forms foi preenchido
-    // const selects = document.querySelectorAll('select[required]');
-    // const submitButton = document.getElementById('botao_hora');
-    // const event_name = document.getElementById('event_name');
-    
-    // function checkSelects() {
-    //     let allFilled = true;
-    
-    //     selects.forEach(select => {
-    //         console.log(`Valor do select: ${select.value}`);
-    //         if (!select.value || select.value === 'Horas' || select.value === 'Minutos') {
-    //             allFilled = false;
-    //         }
-    //     });
-    
-    //     console.log(`Valor do event_name: ${event_name.value.trim()}`);
-    //     if (!event_name.value.trim()) {
-    //         allFilled = false;
-    //     }
-    
-    //     console.log(`Todos preenchidos: ${allFilled}`);
-    //     submitButton.disabled = !allFilled;
-    // }
-    
-    // selects.forEach(select => {
-    //     select.addEventListener('change', checkSelects);
-    // });
-    
-    // event_name.addEventListener('input', checkSelects); // Adiciona evento de input para o campo event_name
-    
-    // checkSelects(); // Verificação inicial
-    
 });
 
 function salvar_horaMin(selectId) {
