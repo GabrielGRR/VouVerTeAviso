@@ -112,9 +112,13 @@ def events(Id_event):
     users_result = cursor.execute(users_query).fetchall()
     print(users_result)
 
+    users_query = f"select event from event where id_event = {Id_event};"
+    name_event = cursor.execute(users_query).fetchone()
+    print(name_event)
+
     connection.close() #talvez seja desnecessário
     print(result)
-    return render_template('event.html', Id_event = Id_event, event_data = result, users_result = users_result )
+    return render_template('event.html', Id_event = Id_event, event_data = result, users_result = users_result, name_event = name_event[0])
 
 #Enviar para o BD informações do usuário
 @app.route('/user-data', methods=["POST", "GET"])
