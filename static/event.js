@@ -1,7 +1,10 @@
-console.log('event.js')
-
 // todos os horários disponíveis estão dentro deste elemento
 const box_divs = document.querySelectorAll('.min_box');
+
+const original_color = 'rgb(80, 200, 120)';
+
+let max_users = 0;
+var percent = 0;
 
 // todos os elementos escutam evento de clique
 box_divs.forEach(function(element) {
@@ -75,9 +78,6 @@ function add_user_times_to_db(){
     });    
 };
 
-let max_users = 0;
-var percent = 0;
-
 fetch(`/get_users-time?Id_event=${window.location.pathname.slice(1)}`)
                 .then(response => response.json())
                 .then(data => {
@@ -122,14 +122,15 @@ function populate_colors(users_current_times){
     });
     console.log("max users are:", max_users);
     percent = 100/max_users;
-    populate_colors_on_divs();
+    populate_colors_on_divs(max_users);
+    create_color_divs_comparison(max_users);
 };
 
 // como terá uma 'régua' mostrando a quantidade de pessoas por dia, mudar para valor full
 // possivlmente terá um loop criando divs dentro do display flex da régua
 // deixar salvo a cor "máxima", ir aumentando percent
 
-function populate_colors_on_divs(){
+function populate_colors_on_divs(max_users){
     const users_divs = document.querySelectorAll('div[users_quantity]');
     users_divs.forEach(function(element){
         let users_quantity = Number(element.getAttribute('users_quantity'))
@@ -143,6 +144,31 @@ function populate_colors_on_divs(){
         }
     });
 };
+
+function create_color_divs_comparison(max_users){
+    const ruler_divs = document.getElementById('container_regua_temp');
+
+    for(let i=0;i<max_users+1;i++){
+        var ruler_qtt = document.createElement("div");
+        ruler_qtt.textContent = i;
+        ruler_qtt.classList.add("ruler_qtt"); // Adiciona uma classe à div
+
+        var element = document.createElement("div");
+        element.id = 'color'+i;
+        element.textContent = "teste";
+        element.style.backgroundColor = "white";
+
+        var ruler_container = document.createElement("div");
+        ruler_container.appendChild(ruler_qtt);
+        ruler_container.appendChild(element);
+
+        ruler_divs.appendChild(ruler_container);
+        let shade_amount = max_users-i;
+        shadeRGBColor_div(element, shade_amount);
+    }
+}
+
+
 
 // Clareia a cor de uma div
 function shadeRGBColor_div(div_element, difference) {
@@ -164,40 +190,4 @@ function shadeRGBColor_div(div_element, difference) {
 
     div_element.style.backgroundColor = "rgb(" + newR + "," + newG + "," + newB + ")";
     console.log('local percent',local_percent)
-}
-
-
-
-
-// teste1_element = document.getElementById("teste1");
-// let teste1_color = window.getComputedStyle(teste1_element).backgroundColor;
-
-// linear shading, se eu usar teste1_color ficará logarítmica 
-const original_color = 'rgb(80, 200, 120)';
-// document.getElementById("teste1").style.backgroundColor = original_color;
-
-// caso a pessoa adicionar +1 no dia com máximo de pessoas, refazer a conta
-// rodar função populate_colors_on_divs quando a pessoa responder o nome dela?
-
-// Clareia a cor de uma div
-function shadeRGBColor() {
-    
-    console.log("maxxx users are:", max_users);
-    console.log(percent)
-    var f = original_color.slice(4, -1).split(","), 
-        t = percent < 0 ? 0 : 255, 
-        p = percent < 0 ? percent * -1 : percent, 
-        R = parseInt(f[0]), 
-        G = parseInt(f[1]), 
-        B = parseInt(f[2]);
-
-    var newR = Math.round((t - R) * (p / 100)) + R;
-    var newG = Math.round((t - G) * (p / 100)) + G;
-    var newB = Math.round((t - B) * (p / 100)) + B;
-
-    document.getElementById("teste1").style.backgroundColor = "rgb(" + newR + "," + newG + "," + newB + ")";
-    teste1_color = document.getElementById("teste1").style.backgroundColor;
-    percent+=percent;
-    
-    console.log(teste1_color)
 }

@@ -2,16 +2,17 @@
     text-align: center;
 }
 
-.div_2 {
+.div_2, .navbar {
   flex: 1;
   text-align: center;
+  background-color: #F1F3C2 !important;
 }
 
 .scrollspy-example{
   overflow: scroll; 
   max-height: 50vh; 
   overflow-x: hidden;
-  background-color: #CEDF9F !important;
+  background-color: #F1F3C2 !important;
 }
 
 .select_time{
@@ -22,7 +23,7 @@
 }
 
 .cabecalho{
-  background-color: #F1F3C2;
+  background-color: #F1F3C2 !important;
 }
 
 .p-3{
@@ -66,6 +67,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  background-color: #CEDF9F;
 }
 
 .dia_semana{
@@ -87,6 +89,7 @@
   display: flex;
   flex-wrap: nowrap;
   flex: 1;
+  background-color: #CEDF9F;
 }
 
 .day {
@@ -164,7 +167,8 @@
 
 .minute{
   width: 58px;
-  /* background-color: rgba(112, 112, 112, 0.219); */
+  text-align: center;
+  background-color: #F1F3C2
 }
 
 .hour_selected {
@@ -184,11 +188,36 @@
   text-align: right;
 }
 
+.div_container{
+  display:flex
+}
+
+.div1, .div3{
+  flex:3
+}
+
+.div2{
+  flex:2;
+  display:flex;
+  flex-direction: column;
+}
+
+.event_name, .qtd_pessoas, .ruler_qtt{
+  text-align: center;
+}
+
+.container_regua_temp{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 div {
   outline: 1px dashed blue; /* Dashed blue outline */
 }
 
-body, header, .navbar{
+body, header{
   background-color: #CEDF9F !important;
   color:black;
 }

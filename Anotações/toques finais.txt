@@ -14,13 +14,15 @@ Home:
       v adicionar botão criar evento
    v atualizar paleta de cores
    v colocar required no input nome do evento
+   v header do navbar tem que ser o verde claro
 
 event:
-   - retirar botão 'mudar cor'
-   - retirar códigos inúteis do mudar cor
+   v caguei na formatação xD
+   v retirar botão 'mudar cor'
+   v retirar códigos inúteis do mudar cor
    - adicionar div do meio:
-      - Div título com nome do evento
-      - div com régua de cores
+      v Div título com nome do evento
+      v div com régua de cores
       - adicionar nome do usuário atual:
          - esconder div lateral enquanto nome não for preenchido
          - mostrar form com o nomes enquanto o nome não for preenchido
@@ -36,6 +38,8 @@ event:
    - atualizar paleta de cores
 
 limpar os console.log
+
+atualizar texto da homepage
 
 terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 

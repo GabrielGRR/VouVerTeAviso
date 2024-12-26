@@ -31,7 +31,7 @@
 
                     <!--NavBar item ABOUT-->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/about" id="about">About</a>
+                        <a class="nav-link" aria-current="page" href="/about" id="about">About</a>
                     </li>
 
                     </ul>
@@ -47,7 +47,7 @@
 
 
             <!-- Div 2 -->
-            <div class="div2">
+            <div class="div1">
 
                 <div class="days-event-container">
 
@@ -122,8 +122,35 @@
                 <button id="add_hrs_db" onclick="add_user_times_to_db()">Add disponibilidade</button>
             </div>
 
+            <!-- MIDDLE PANEL -->
+            <div id="middle_panel" class="div2">
+                <div id="nome_do_evento" class="event_name">
+                    {{ name_event }}
+                </div>
+
+                <div id="regua_temperatura">
+                    <div id="texto_qtd_pessoas" class="qtd_pessoas">
+                        Quantidade de pessoas disponíveis:
+                    </div>
+                    <div id="container_regua_temp" class="container_regua_temp">
+                        
+                    </div>
+                </div>
+
+                <div id="nomes_usuarios">
+                    Shakira<br>
+                    Gustavo<br>
+                    Guilherme<br>
+                    Samuel<br>
+                    Daniel<br>
+                    Invader
+
+                </div>
+
+            </div>
+
             <!-- RIGHT PANEL -->
-            <div id="teste1" class="div1">
+            <div id="teste1" class="div3">
 
                 <div class="days-event-container">
 
@@ -194,9 +221,6 @@
                     {% endfor %}
                     {% endif %}
                 </div>
-
-                <button id="color_test" onclick="shadeRGBColor()">Mudar cor</button>
-
             </div>
     </main>
 
