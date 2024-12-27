@@ -23,17 +23,18 @@ event:
    - adicionar div do meio:
       v Div título com nome do evento
       v div com régua de cores
-      - adicionar nome do usuário atual:
-         - esconder div lateral enquanto nome não for preenchido
-         - mostrar form com o nomes enquanto o nome não for preenchido
-         - esconder forms com o nome quando preenchido
-         - salvar numa variavel local o nome do meliante
-         - integrar ao fetch o nome da pessoa
+      v adicionar nome do usuário atual:
+         v esconder div lateral enquanto nome não for preenchido style="visibility: hidden"
+         v mostrar form com o nomes enquanto o nome não for preenchido (talvez appendchild não funcione, colocar na posição 0)
+         v esconder forms com o nome quando preenchido style="visibility: none"
+         v salvar numa variavel local o nome do meliante
+         v integrar ao fetch o nome da pessoa
+
       - div com mouse event dos integrantes daquele horário:
-         - salvar um dicionário com o id da div?
-         - adicionar no loop de users_quantity o valor ao dicionário
+         - criar um dicionário de listas do id das div
+            - mudar dinamicamente os nomes das divs ex: dez15_1415
+            - adicionar no loop de users_quantity o valor ao dicionário         
          - evento de mouse para acionar evento  
-         - função que cria as div com os usuários daquele horário
          - ao sair do evento, pensar em algo para cancelar a função ou apagar as divs (while hover?) 
    - atualizar paleta de cores
 
@@ -102,6 +103,8 @@ dar uma estilizida no site
 mostrar botão 'add para db' somente se div_num >= 1 (ou outro processo de validação)
 validar inputs que entram no SQL
 proteções no código, como SQL injection
+
+adicionar senha para forms do usuario
 
 mudar valor do select de default 12 e 18 (hour_1 e hour_2)
 

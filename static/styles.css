@@ -157,6 +157,10 @@
   justify-content: center;
 }
 
+.hidden_left_panel {
+  display:none;
+}
+
 .hour_event{
   display: flex;
   flex-direction: column;
@@ -192,8 +196,8 @@
   display:flex
 }
 
-.div1, .div3{
-  flex:3
+.div1 {
+  flex:3;
 }
 
 .div2{
@@ -201,6 +205,11 @@
   display:flex;
   flex-direction: column;
 }
+
+.div3{
+  flex:3;
+}
+
 
 .event_name, .qtd_pessoas, .ruler_qtt{
   text-align: center;
