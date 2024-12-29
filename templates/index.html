@@ -55,9 +55,7 @@
 
           <!--Segundo texto-->
           <p class="paragraph-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique numquam nulla ea itaque id inventore
-            temporibus odio blanditiis, repellat, placeat illo molestias eaque! Dolorum ea non reiciendis impedit
-            similique dolores?
+            Vou ver e te aviso é um site que te ajuda a organizar encontros e eventos com seus amigos, decida o melhor e horário com o pessoal enviando o link do evento!
           </p>
       </div>
       <div class="div_2_3_container">
@@ -159,17 +157,17 @@
                       <option selected hidden value="12">Horas</option>
                       <!--Loop generated hours-->
                       {% for value in range(24) %}
-                        <option value="{{value}}">{{ value }}</option>
+                        <option value="{{value}}">{{ value }}:00</option>
                       {% endfor %}
                     </select>
                 
                 <!-- Dropdown Minutos -->
-                  <select id="min_1" name="min_1" onchange="salvar_horaMin('min_1')" class="select_time" required>
+                  <!-- <select id="min_1" name="min_1" onchange="salvar_horaMin('min_1')" class="select_time" required>
                     <option disabled selected hidden>Minutos</option>
                     {% for value in range(4) %}
                       <option value="{{value * 10}}">{{ value * 15 }}</option>
                     {% endfor %}
-                  </select>
+                  </select> -->
                 </div>
               </div>
 
@@ -184,17 +182,17 @@
                       <option selected hidden value="18">Horas</option>
                       <!--Loop generated hours-->
                       {% for value in range(24) %}
-                        <option value="{{value}}">{{ value }}</option>
+                        <option value="{{value}}">{{ value }}:00</option>
                       {% endfor %}
                     </select>
                 
                 <!-- Dropdown Minutos -->
-                  <select id="min_2" name="min_2" onchange="salvar_horaMin('min_2')" class="select_time" required>
+                  <!-- <select id="min_2" name="min_2" onchange="salvar_horaMin('min_2')" class="select_time" required>
                     <option disabled selected hidden>Minutos</option>
                     {% for value in range(4) %}
                       <option value="{{value * 10}}">{{ value * 15 }}</option>
                     {% endfor %}
-                  </select>
+                  </select> -->
                 </div>
               </div>
 

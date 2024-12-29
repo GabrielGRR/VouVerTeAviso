@@ -70,6 +70,8 @@ modernizar add nome do evento
 
 definir todo o BD como text?
 
+evento começa/termina - remover os mintuos, deixar o dropdown de horas apenas como 13:00,14:00,...
+
 corrigir tamanho dos panels
 
 responsividade?

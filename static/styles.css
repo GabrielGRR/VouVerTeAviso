@@ -8,6 +8,11 @@
   background-color: #F1F3C2 !important;
 }
 
+.navbar{
+  outline-style: double;
+  margin-right:3px;
+}
+
 .scrollspy-example{
   overflow: scroll; 
   max-height: 50vh; 
@@ -34,6 +39,7 @@
   flex:1;
   display:flex;
   flex-direction: column;
+  outline-style: double !important;
 }
 
 .main_container{
@@ -44,6 +50,7 @@
 .div_2_3_container{
   display: flex;
   flex-direction: row;
+  outline-style: double;
 }
 
 .form-group {
@@ -215,11 +222,13 @@
 }
 
 .div_container{
-  display:flex
+  display:flex;
+  border-bottom: double black;
 }
 
 .div1 {
   flex:3;
+  outline-style: double;
 
 }
 
@@ -233,14 +242,22 @@
   flex:2;
   display:flex;
   flex-direction: column;
+  border-left: double;
+  border-right: double;
 }
 
 .div3{
   flex:3;
+  outline-style: double;
 }
 
 .event_name{
   font-size:30px;
+  border-bottom: 1px solid black;
+}
+
+.qtd_pessoas, .container_regua_temp{
+  border-bottom: 1px dotted;
 }
 
 .event_name, .qtd_pessoas, .ruler_qtt{
@@ -254,9 +271,9 @@
 }
 
 
-div {
+/* div {
   outline: 1px dashed blue;
-}
+} */
 
 body, header{
   background-color: #CEDF9F !important;
