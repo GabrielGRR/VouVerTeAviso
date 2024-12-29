@@ -159,6 +159,28 @@
 
 .hidden_left_panel {
   display:none;
+  justify-content: center;
+  align-items: center;
+}
+
+.temporary_forms{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.names_container{
+  display:flex;
+  flex-direction: row;
+}
+
+.title_available_unavailable{
+  background-color: #A1D6B2;
+}
+
+.available_unavailable{
+  flex:1;
+  text-align: center;
 }
 
 .hour_event{
@@ -198,6 +220,13 @@
 
 .div1 {
   flex:3;
+
+}
+
+.button_container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .div2{
@@ -210,6 +239,9 @@
   flex:3;
 }
 
+.event_name{
+  font-size:30px;
+}
 
 .event_name, .qtd_pessoas, .ruler_qtt{
   text-align: center;
@@ -223,7 +255,7 @@
 
 
 div {
-  outline: 1px dashed blue; /* Dashed blue outline */
+  outline: 1px dashed blue;
 }
 
 body, header{

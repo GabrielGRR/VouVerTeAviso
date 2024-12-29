@@ -31,11 +31,22 @@ event:
          v integrar ao fetch o nome da pessoa
 
       - div com mouse event dos integrantes daquele horário:
-         - criar um dicionário de listas do id das div
-            - mudar dinamicamente os nomes das divs ex: dez15_1415
-            - adicionar no loop de users_quantity o valor ao dicionário         
-         - evento de mouse para acionar evento  
-         - ao sair do evento, pensar em algo para cancelar a função ou apagar as divs (while hover?) 
+         v criar um dicionário de listas do id das div
+         v mudar dinamicamente os nomes das divs ex: dez15_1415
+         v evento de mouse para acionar evento  
+         v ao sair do evento, pensar em algo para cancelar a função ou apagar as divs (while hover?) 
+
+         v conferir se dicionário está sendo atualizado corretamente
+
+         v talvez zerar user_quantity cada vez que chamar populate?
+
+         v ao clicar em um dos left panel, atualizar o dicionário
+         v entrar novamente no repopulamente de cores, possivelmente vou ter que fazer uma nova função ou refatorar as existentes
+
+
+         v adicionar evento que ao passar o mouse sobre a div, mostrar quem marcou para aquele dia
+         v mostrar quem não vai na direita?
+
    - atualizar paleta de cores
 
 limpar os console.log
@@ -52,6 +63,8 @@ terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
 adicionar um readme 
 
 corrigir left panel em event.html?
+
+checar por nomes duplicados
 
 modernizar add nome do evento
 

@@ -46,7 +46,7 @@
             <!-- LEFT PANEL -->
             <div class="div1">
 
-                <div id="inform_username">
+                <div id="inform_username" class="temporary_forms">
                     <form>
                     <div>Insira o seu nome:</div>
                     <label>Nome: </label>
@@ -124,8 +124,9 @@
                     {% endfor %}
                     {% endif %}
                 </div>
-
-                <button id="add_hrs_db" class="hidden_left_panel" onclick="add_user_times_to_db()">Add disponibilidade</button>
+                <div id="button_container" class="button_container">
+                    <button id="add_hrs_db" class="hidden_left_panel" onclick="add_user_times_to_db()">Add disponibilidade</button>
+                </div>
             </div>
 
 
@@ -144,16 +145,27 @@
                     </div>
                 </div>
 
-                <div id="nomes_usuarios">
-                    Shakira<br>
-                    Gustavo<br>
-                    Guilherme<br>
-                    Samuel<br>
-                    Daniel<br>
-                    Invader
-                </div>
-                <div id="test_hover">
-                    
+                <div id="names_container" class="names_container">
+
+                    <div id="container_available_users" class="available_unavailable">
+                        <div id="available_users_title" class="title_available_unavailable">
+                            Disponível: 
+                        </div>
+
+                        <div id="available_users">
+
+                        </div>
+                    </div>
+
+                    <div id="container_unavailable_users" class="available_unavailable">
+                        <div id="unavailable_users_title" class="title_available_unavailable">
+                            Indisponível: 
+                        </div>
+                        <div id="unavailable_users">
+                            
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

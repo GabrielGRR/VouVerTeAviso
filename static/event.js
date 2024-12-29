@@ -8,7 +8,6 @@ let max_users = 0;
 var percent = 0;
 
 let user_name = '';
-
 let current_user_object_array = []
 
 
@@ -16,11 +15,36 @@ let current_user_object_array = []
 const mouse_targets = document.querySelectorAll('div[users_quantity]');
 mouse_targets.forEach(target => {
     target.addEventListener("mouseenter", () => {
-        // target.style.backgroundColor = "white";
+        var list_names =[];
+
+        let month = target.getAttribute('month');
+        let day = target.getAttribute('day');
+        let hour = target.getAttribute('hour');
+        let min = target.getAttribute('minute');
+
+        current_user_object_array.forEach(item => {
+            
+            // Compara o valor dos atributos com o BD
+            if (month === item.User_month.toString() &&
+                day === item.User_day.toString() &&
+                hour === item.User_hour.toString() &&
+                min === item.User_minute.toString()) {
+                    list_names.push(item.User_name)
+            }
+            show_available_users(list_names);
+            show_unavailable_users(list_names)
+        });
     });
 
     target.addEventListener("mouseleave", () => {
         // target.style.backgroundColor = "#F1F3C2";
+        show_available_users([]);
+
+        const container_names = document.getElementById('unavailable_users');
+
+        while (container_names.firstChild) {
+            container_names.removeChild(container_names.firstChild);
+        };
     });
 });
 
@@ -75,6 +99,7 @@ function get_user_name(event){
     user_name = document.getElementById("user_name").value
 
     document.getElementById("inform_username").classList.add('hidden_left_panel');
+    document.getElementById("inform_username").classList.remove('temporary_forms');
     document.getElementById("event_user_name").classList.remove('hidden_left_panel');
     document.getElementById("add_hrs_db").classList.remove('hidden_left_panel');
 };
@@ -179,7 +204,46 @@ function create_color_divs_ruler(max_users){
         let shade_amount = max_users-i;
         shadeRGBColor_div(element, shade_amount);
     }
-}
+};
+
+function show_available_users(list_names){
+    const container_names = document.getElementById('available_users');
+
+    // Remove todos os elementos filhos do container
+    while (container_names.firstChild) {
+        container_names.removeChild(container_names.firstChild);
+    };
+
+    list_names.forEach((name) => {
+        var div_name = document.createElement("div");
+        div_name.textContent = name;
+        container_names.appendChild(div_name);        
+    });
+};
+
+function show_unavailable_users(list_names){
+    const container_names = document.getElementById('unavailable_users');
+
+    // Remove todos os elementos filhos do container
+    while (container_names.firstChild) {
+        container_names.removeChild(container_names.firstChild);
+    };
+
+    var all_names = new Set();
+
+    current_user_object_array.forEach(item => {            
+        all_names.add(item.User_name);
+    });
+
+    const unavailable_users = Array.from(all_names).filter(item => !list_names.includes(item));
+
+    unavailable_users.forEach((name) => {
+        var div_name = document.createElement("div");
+        div_name.textContent = name;
+        container_names.appendChild(div_name);        
+    });
+};
+
 
 
 // Clareia a cor de uma div
