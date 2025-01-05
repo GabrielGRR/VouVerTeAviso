@@ -12,32 +12,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggleButton');
     const form = document.querySelector('#criar_evento')
 
-    // Cada botão tem as classes toggleButton, day e month como atributos.
+    // Cada botão tem as classes toggleButton, day, month e year como atributos.
     // a função abaixo entende se o botão está apertado ou não, mudando suas cores e aplicando as funções
     buttons.forEach(button => {
         button.addEventListener('click', function () {
             const day = this.getAttribute('day');
             const month = this.getAttribute('month');
+            const year = this.getAttribute('year');
 
             if (button.getAttribute('aria-pressed') === 'true') {
                 button.setAttribute('aria-pressed', 'false');
                 button.classList.remove('pressed');
-                remove_day(day, month);
+                remove_day(day, month, year);
             } else {
                 button.setAttribute('aria-pressed', 'true');
                 button.classList.add('pressed');
-                add_day(day, month, min_hour, max_hour);
+                add_day(day, month, year);
             }
         });
     });
 
-    function add_day(day, month, min_hour, max_hour) {
-        days_array.push([String(day), String(month)])
+    function add_day(day, month, year) {
+        days_array.push([day, month, year])
+        console.log('evento add', days_array)
     }
-    function remove_day(day, month) {
+    function remove_day(day, month, year) {
         for (let i = days_array.length-1; i >= 0;i--){
-            if (days_array[i][0] == String(day) && days_array[i][1] == String(month)){
+            console.log('antes do if', days_array)
+            if (days_array[i][0] == day && days_array[i][1] == month && days_array[i][2] == year){
                 days_array.splice(i,1);
+                console.log('depois do if', days_array)
             }
         }
     }
@@ -51,9 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Coleta os dados do formulário
         const data = new FormData(evento.target);
         const event_min_hour = data.get("hour_1");
-        const event_min_minute = data.get("min_1");
         const event_max_hour = data.get("hour_2");
-        const event_max_minute = data.get("min_2");
         const event_name = data.get("event_name");
     
         // Envia a solicitação HTTP usando fetch
@@ -65,9 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             body: JSON.stringify({
                 days_array, 
                 event_min_hour, 
-                event_min_minute, 
                 event_max_hour, 
-                event_max_minute, 
                 event_name
             }) 
         })
@@ -95,21 +95,9 @@ function salvar_horaMin(selectId) {
     let selectElement = document.getElementById(selectId)
     if(selectId === 'hour_1'){
         min_hour = selectElement.value;
-    } else if (selectId === 'min_1'){
-        min_minute = selectElement.value;
     } else if (selectId === 'hour_2'){
         max_hour = selectElement.value;
-    } else if (selectId === 'min_2'){
-        max_minute = selectElement.value;
     }
 }
 
-
-
-
-
 // Se o evento terminar de madrugada, tem que mudar um pouco a lógica de loop e apresentação de horas
-
-
-
-// Adicioanr SQL ao código ou começar implementação das HORAS nos dias adicionados...

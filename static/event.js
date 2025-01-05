@@ -21,6 +21,7 @@ mouse_targets.forEach(target => {
         let day = target.getAttribute('day');
         let hour = target.getAttribute('hour');
         let min = target.getAttribute('minute');
+        let year = target.getAttribute('year');
 
         current_user_object_array.forEach(item => {
             
@@ -28,7 +29,8 @@ mouse_targets.forEach(target => {
             if (month === item.User_month.toString() &&
                 day === item.User_day.toString() &&
                 hour === item.User_hour.toString() &&
-                min === item.User_minute.toString()) {
+                min === item.User_minute.toString() &&
+                year === item.User_year.toString()) {
                     list_names.push(item.User_name)
             }
             show_available_users(list_names);
@@ -61,6 +63,7 @@ function time_selected_toggle(event){
     let day = divClicada.getAttribute('day');
     let hour = divClicada.getAttribute('hour');
     let min = divClicada.getAttribute('minute');
+    let year = divClicada.getAttribute('year');
 
     clear_colors();
 
@@ -74,7 +77,8 @@ function time_selected_toggle(event){
             obj.User_month === month &&
             obj.User_hour === hour &&
             obj.User_minute === min &&
-            obj.User_name === user_name
+            obj.User_name === user_name &&
+            obj.User_year === year
         ))
 
     // adicionar à array
@@ -87,9 +91,11 @@ function time_selected_toggle(event){
             User_hour: hour,
             User_minute: min,
             User_month: month,
-            User_name: user_name
+            User_name: user_name,
+            User_year: year
         });
     };
+    console.log(current_user_object_array);
     populate_colors(current_user_object_array);
 };
 
@@ -130,6 +136,7 @@ function populate_colors(users_current_times){
         let day = element.getAttribute('day');
         let hour = element.getAttribute('hour');
         let min = element.getAttribute('minute');
+        let year = element.getAttribute('year');
 
         if (element.id === "min_box"){
             element.setAttribute("id", month+day+"_"+hour+min)
@@ -141,7 +148,8 @@ function populate_colors(users_current_times){
             if (month === item.User_month.toString() &&
                 day === item.User_day.toString() &&
                 hour === item.User_hour.toString() &&
-                min === item.User_minute.toString()) {
+                min === item.User_minute.toString() &&
+                year === item.User_year.toString()) {
                     let users_current_total = Number(element.getAttribute('users_quantity'));
                     users_current_total++;
                     if (users_current_total > max_users){
@@ -276,7 +284,8 @@ function add_user_times_to_db(){
             const day = element.getAttribute('day');
             const hour = element.getAttribute('hour');
             const min = element.getAttribute('minute');
-            user_available_times_array.push([String(month), String(day), String(hour), String(min)])
+            const year = element.getAttribute('year');
+            user_available_times_array.push([String(month), String(day), String(hour), String(min), String(year)])
         }}
     );    
 
@@ -306,3 +315,17 @@ function add_user_times_to_db(){
         console.error('Erro:', error); // Se ocorrer algum erro
     });    
 };
+
+const selection_box_divs = document.querySelectorAll('.min_box');
+selection_box_divs.forEach(target => {
+    target.addEventListener("mousedown", () => {
+        console.log('down');
+        console.log(target);
+        console.log('----------');
+    });
+    target.addEventListener("mouseup", () => {
+        console.log('up');
+        console.log(target);
+        console.log('----------');
+    })
+});

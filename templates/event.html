@@ -71,16 +71,16 @@
                                     {{ hour.counter }}:00
                                 </div>
                                 <div class="hour_event border border-dark hour">
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="0" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="0" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         00
                                     </div>
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="15" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         15
                                     </div>
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="30" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         30
                                     </div>
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="45" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         45
                                     </div>
                                     {% set hour.counter = hour.counter + 1 %}
@@ -103,16 +103,16 @@
                             <div class="hour_display">
                             <!--esta div é apenas para alinhar os horários com o primeiro loop-->
                                 <div class="hour_event border border-dark hour">
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="0" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="0" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         00
                                     </div>
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="15" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         15
                                     </div>
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="30" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         30
                                     </div>
-                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
+                                    <div id="user_min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="45" hour="{{ hour.counter }}" selected="false" class="border minute min_box">
                                         45
                                     </div>
                                     {% set hour.counter = hour.counter + 1 %}
@@ -189,16 +189,16 @@
                                     {{ hour.counter }}:00
                                 </div>
                                 <div class="hour_event border border-dark hour">
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="0" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="0" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         00
                                     </div>
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="15" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         15
                                     </div>
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="30" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         30
                                     </div>
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="45" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         45
                                     </div>
                                     {% set hour.counter = hour.counter + 1 %}
@@ -221,16 +221,16 @@
                             <div class="hour_display">
                             <!--esta div é apenas para alinhar os horários com o primeiro loop-->
                                 <div class="hour_event border border-dark hour">
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="0" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="0" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         00
                                     </div>
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="15" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="15" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         15
                                     </div>
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="30" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="30" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         30
                                     </div>
-                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" minute="45" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
+                                    <div id="min_box" day="{{ day[0] }}" month="{{ day[1] }}" year="{{ day[-1] }}" minute="45" hour="{{ hour.counter }}" users_quantity="0" class="border minute">
                                         45
                                     </div>
                                     {% set hour.counter = hour.counter + 1 %}

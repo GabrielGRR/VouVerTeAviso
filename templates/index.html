@@ -131,7 +131,7 @@
                 <div class="days">
                   {% for y in range(7) %} <!-- Dias em divs -->
                   <button type="button" class="btn btn-outline-dark btn-lg btn-custom toggleButton" aria-pressed="false"
-                    month="{{ month_of_the_day[i][y] }}" day="{{ weeklist[i][y] }}">
+                    month="{{ month_and_year_of_the_day[i][y][0] }}" day="{{ weeklist[i][y] }}" year="{{ month_and_year_of_the_day[i][y][1] }}">
                     {{ weeklist[i][y] }}
                   </button>
                   {% endfor %}

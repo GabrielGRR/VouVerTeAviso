@@ -21,6 +21,8 @@ excl_months, bool_list = month_headers()
 month_of_the_day = month_belong_to_day()
 num_rows = len(month_monthlist)
 
+# print(month_of_the_day) 
+
 #Inicialização da home
 @app.route('/', methods=["POST","GET"])
 def index():
@@ -31,7 +33,7 @@ def index():
                            weeklist = month_weekslist,
                            excl_months = excl_months,
                            bool_list = bool_list,
-                           month_of_the_day = month_of_the_day)
+                           month_and_year_of_the_day = month_of_the_day)
 
 #Rota acessada para criar evento e processar dados
 @app.route('/process-data', methods=["POST", "GET"])
@@ -41,8 +43,6 @@ def process_data():
         connection = sql.connect('events_db.db')
         #Cursor é o objeto que irá manipular a DB, acessando as células e executando comandos
         cursor = connection.cursor() 
-        #coletando dados do JSON, o formato é em DICT{'days_array': [['24', 'Jul'], ['31', 'Jul']], 'event_min_hour': '4', 
-        # 'event_min_minute': '50', 'event_max_hour': '7', 'event_max_minute': '50', 'event_name': 'ssss'}
         
         data_package = request.get_json()
         event_name = data_package.get('event_name')
@@ -52,8 +52,7 @@ def process_data():
 
         #agora é adicionado outras informações, como horário mínimo e máximo e linkando ao ID único do evento
         execute_command = """INSERT INTO event_time(
-        Id_event, Day, Month, Event_min_hour, Event_min_minute, Event_max_hour, Event_max_minute
-        ) VALUES(?, ?, ?, ?, ?, ?, ?)"""
+        Id_event, Day, Month, Event_min_hour, Event_max_hour, Year) VALUES(?, ?, ?, ?, ?, ?)"""
 
         Id_event = cursor.lastrowid
 
@@ -63,15 +62,13 @@ def process_data():
         for i in range(len(days_array)):
             Day = days_array[i][0]
             Month = days_array[i][1]
+            Year = days_array[i][2]
 
             #possivelmente terei de escalar este código ao incluir horários individuais dos dias de evento
             
             Event_min_hour = data_package.get('event_min_hour')
-            Event_min_minute = data_package.get('event_min_minute')
             Event_max_hour = data_package.get('event_max_hour')
-            Event_max_minute = data_package.get('event_max_minute')
-            cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, 
-                                            Event_min_minute, Event_max_hour, Event_max_minute])
+            cursor.execute(execute_command, [Id_event, Day, Month, Event_min_hour, Event_max_hour, Year])
         connection.commit()
 
         connection.close()   
@@ -88,7 +85,23 @@ def events(Id_event):
     #cria conexão com o BD
     connection = sql.connect('events_db.db')
     cursor = connection.cursor()
-    event_query = f"select Day, Month, Event_min_hour, Event_max_hour from event_time where Id_event = {Id_event} order by Day;"
+    event_query = f"""SELECT Day, Month, Event_min_hour, Event_max_hour, Year FROM event_time WHERE Id_event = {Id_event}
+    ORDER BY Year,
+        CASE 
+            WHEN Month = 'Jan' THEN 1
+            WHEN Month = 'Fev' THEN 2
+            WHEN Month = 'Mar' THEN 3
+            WHEN Month = 'Abr' THEN 4
+            WHEN Month = 'Mai' THEN 5
+            WHEN Month = 'Jun' THEN 6
+            WHEN Month = 'Jul' THEN 7
+            WHEN Month = 'Ago' THEN 8
+            WHEN Month = 'Set' THEN 9
+            WHEN Month = 'Out' THEN 10
+            WHEN Month = 'Nov' THEN 11
+            WHEN Month = 'Dez' THEN 12
+        END,
+        Day;"""
     result = cursor.execute(event_query).fetchall()
 
     # filtrar por ano > mês > Dia 
@@ -102,13 +115,7 @@ def events(Id_event):
         print('fedorento deu submit vazio')
         return redirect(url_for('index'))
 
-    print(type(result[0][-1]))
-    # if not isinstance(result[0][-1], int):
-    #     print('is not int')
-    #     result[0][-1] = 12
-    #     result[0][-2] = 18
-
-    users_query = f"select User_name, User_month, User_day, User_hour, User_minute from users_time where Id_event = {Id_event};"
+    users_query = f"select User_name, User_month, User_day, User_hour, User_minute, User_year from users_time where Id_event = {Id_event};"
     users_result = cursor.execute(users_query).fetchall()
     print(users_result)
 
@@ -139,10 +146,10 @@ def user_event():
 
         connection = sql.connect('events_db.db')
         cursor = connection.cursor()         
-        execute_command = "INSERT INTO users_time(Id_event, User_name, User_month, User_day, User_hour, User_minute) VALUES(?,?,?,?,?,?)"
+        execute_command = "INSERT INTO users_time(Id_event, User_name, User_month, User_day, User_hour, User_minute, User_year) VALUES(?,?,?,?,?,?,?)"
         for time in user_times:
-            cursor.execute(execute_command, [id_event, user_name, time[0], time[1], time[2], time[3]])
-            print(id_event, user_name, time[0], time[1], time[2], time[3])
+            cursor.execute(execute_command, [id_event, user_name, time[0], time[1], time[2], time[3], time[4]])
+            print(id_event, user_name, time[0], time[1], time[2], time[3], time[4])
 
         connection.commit()
         connection.close()
@@ -160,9 +167,11 @@ def get_users_time():
     if Id_event:
         connection = sql.connect('events_db.db')
         cursor = connection.cursor()
-        users_query = "SELECT User_name, User_month, User_day, User_hour, User_minute FROM users_time WHERE Id_event = ?;"
+        users_query = "SELECT User_name, User_month, User_day, User_hour, User_minute, User_year FROM users_time WHERE Id_event = ?;"
         users_result = cursor.execute(users_query, (Id_event,)).fetchall()
         connection.close()
+
+        print("users_result:",users_result)
 
         # Converte o resultado para uma lista de dicionários
         users_list = []
@@ -172,7 +181,8 @@ def get_users_time():
                 "User_month": row[1],
                 "User_day": row[2],
                 "User_hour": row[3],
-                "User_minute": row[4]
+                "User_minute": row[4],
+                "User_year": row[5]
             }
             users_list.append(user_dict)
 

@@ -1,66 +1,16 @@
-MVP!
+* Aprimoramentos!!
 
-Home:
-   v retirar botão da home 
-   v retirar os "hours test"
-   v apagar js de hour test
-   v dar uma silhueta ao site (dar espaçamento lateral - centralizar as infos)
-   v alinhar 'header' dos dias da semana DSTQQSS
-   v centralizar nome do evento
-   v remover primeiro lorem ipsum
-   div lateral:
-      v adicionar div horário de início/fim
-      v repetir abaixo mas para hora final
-      v adicionar botão criar evento
-   v atualizar paleta de cores
-   v colocar required no input nome do evento
-   v header do navbar tem que ser o verde claro
+DragMouseEvent:
+   - garantir que divs ao arrastar e 'desarrastar' sobre divs marcadas, elas continuem marcadas
+   - questão do ano
 
-event:
-   v caguei na formatação xD
-   v retirar botão 'mudar cor'
-   v retirar códigos inúteis do mudar cor
-   - adicionar div do meio:
-      v Div título com nome do evento
-      v div com régua de cores
-      v adicionar nome do usuário atual:
-         v esconder div lateral enquanto nome não for preenchido style="visibility: hidden"
-         v mostrar form com o nomes enquanto o nome não for preenchido (talvez appendchild não funcione, colocar na posição 0)
-         v esconder forms com o nome quando preenchido style="visibility: none"
-         v salvar numa variavel local o nome do meliante
-         v integrar ao fetch o nome da pessoa
-
-      - div com mouse event dos integrantes daquele horário:
-         v criar um dicionário de listas do id das div
-         v mudar dinamicamente os nomes das divs ex: dez15_1415
-         v evento de mouse para acionar evento  
-         v ao sair do evento, pensar em algo para cancelar a função ou apagar as divs (while hover?) 
-
-         v conferir se dicionário está sendo atualizado corretamente
-
-         v talvez zerar user_quantity cada vez que chamar populate?
-
-         v ao clicar em um dos left panel, atualizar o dicionário
-         v entrar novamente no repopulamente de cores, possivelmente vou ter que fazer uma nova função ou refatorar as existentes
+resolver questão do ano, quais colunas irão ser organizadas primeiro (31 dez/01 jan)
+Filtrar os dias primeiro por Ano, depois mês, depois dia
 
 
-         v adicionar evento que ao passar o mouse sobre a div, mostrar quem marcou para aquele dia
-         v mostrar quem não vai na direita?
+att readme 
 
-   - atualizar paleta de cores
-
-limpar os console.log
-
-atualizar texto da homepage
-
-terminar de olhar os requisitos: https://cs50.harvard.edu/x/2024/project/
-
-
-
-
-*Depois
-
-adicionar um readme 
+responsividade
 
 corrigir left panel em event.html?
 
@@ -70,11 +20,7 @@ modernizar add nome do evento
 
 definir todo o BD como text?
 
-evento começa/termina - remover os mintuos, deixar o dropdown de horas apenas como 13:00,14:00,...
-
 corrigir tamanho dos panels
-
-responsividade?
 
 div lateral:
    - Adicionar botão(-) / input / botão(+)
@@ -83,100 +29,20 @@ div lateral:
 
 dar uma olhada no caos que deve estar o .css
 
-Filtrar os dias primeiro por Ano, depois mês, depois dia
-
-adicionar régua de temperatura de qtd de pessoas
-
-avaliar necessidade dos minutos na pagina index
-
-Mostre ao usuário que suas seleções foram salvas com sucesso.
-
-os dias selecionados fora de ordem, tem que estar em ordem na home
-
-mostrar dia numa outra div logo abaixo da do meio, onde mostra o dia que mais pessoas irão
-
-se selecionar dia 30, 31 e 1, a ordem do evento fica como 1, 30, 31
-
-2. Implemente a interação de clique e arrasto:
-   - Use JavaScript para detectar eventos de mouse (mousedown, mousemove, mouseup).
-   - Ao clicar, marque o primeiro intervalo como selecionado.
-   - Enquanto arrasta, continue marcando os intervalos sobre os quais o mouse passa.
-
-4. Armazene as seleções:
-   - Crie uma estrutura de dados para guardar os horários selecionados. (adicionar um botão para guardar essas informações::)
-   * possivelmente adicionar um ajax em tempo real? questionar o claude sobre isso
-   - Atualize essa estrutura conforme o usuário faz seleções.
-
 se a hora final do evento for tipo 3 da manhã e a inicial for 18, o código detectar essa putaria
 embelezar o spyscrolls
-responsividade
-na div ano do calendário, talvez mudar cor quando aproximar de um outro ano ao arrastar os dias
-arrumar a 'semana' do scrollspy
 gerar chave aleatoria para o link url de invite
 adicionar senha ao usuario
-dar uma estilizida no site
-mostrar botão 'add para db' somente se div_num >= 1 (ou outro processo de validação)
 validar inputs que entram no SQL
 proteções no código, como SQL injection
-
-adicionar senha para forms do usuario
-
-mudar valor do select de default 12 e 18 (hour_1 e hour_2)
-
-9. Implemente a responsividade:
-   - Certifique-se de que a interface funcione bem em dispositivos móveis.
-
 
 
 -talvez?
 
-MUI react
-
 AXIOS
 
-ver com a turma o que faz sentido ficar do lado do servidor e o que deveria ser cliente
-
-adicionar doação ou ad?
+adicionar doação ou ad
 
 add botão de desmarcar todos os dias
 
 adicionar extended templates?
-
-
-## Feito!
-
-3. Estilize os intervalos selecionados:
-   - Use CSS para destacar visualmente os intervalos escolhidos.
-
-5. Implemente a funcionalidade de desselecionar:
-   - Permita que o usuário desmarque intervalos já selecionados.
-/\ está feito? acho que sim
-
-1. Crie uma grade de horários:
-   V Divida cada dia em intervalos de tempo (por exemplo, 30 minutos).
-   V Use uma tabela HTML ou divs para representar visualmente esses intervalos.
-   V adicionar as horas ao lado da box de horários
-   
-fazer por hour_chunk, igual no print
-
-4. Armazene as seleções:
-   V o que indicaria quais intervalos irão para o DB são as classes selecionadas?
-   V adicionar um botão para guardar os valores com as classes específicas ativadas
-   V arrumar o JSON
-   V Configurar corretamente o BD no backend
-   V corrigir ordem dos meses no right panel do evento
-
-v - Transferir para a esquerda aquela templates
-
-
-copiar o layout, mas que puxe do BD
-   v copiar o layout
-   v mandar um json pro front com infos do BD
-   v fazer um loop que
-      v compara os atributos da div com elemento[i] do json, se for compatível, str(int(user_quantity)++)
-      v adicionar uma variavel max_users no js que compara com user_quantity em cada loop
-   v definir cor cheia
-   v chamar função mudar_cor *(max_users-users_quantity)
-      v alterar a cor de acordo com a quantidade de pessoas naquela mesma div
-
-v limpar dados errôneos do bd, provavelmente

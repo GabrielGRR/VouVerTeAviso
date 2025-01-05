@@ -278,6 +278,7 @@
 body, header{
   background-color: #CEDF9F !important;
   color:black;
+  user-select: none;
 }
 
 .active{

@@ -172,19 +172,36 @@ def month_headers():
 def month_belong_to_day():
     global week_list, months_weeks, month_to_this_day
 
+    year_month = original_year
+    loop_month = None
+
     weeks_count = len(week_list)
     for i in range(weeks_count):
         loop_week = []
+
         for day in week_list[i]:
+            month_year_list = []
+            # print(months_weeks[i])
             #semana  pertence a somente um mês
             if len(months_weeks[i].split('/')) == 1: 
-                loop_week.append(months_weeks[i])
+                month_year_list.append(months_weeks[i])
+
             #semana pertence a dois meses, mas estamos no mês anterior, com maior dia (pode ser 29, 30 ou 31, por exemplo)
             elif day > week_list[i][-1]:
-                loop_week.append(months_weeks[i].split('/')[0])
+                month_year_list.append(months_weeks[i].split('/')[0])
+
             #na semana com 2 meses, estamos no novo mês
             else:
-                loop_week.append(months_weeks[i].split('/')[-1])
+                month_year_list.append(months_weeks[i].split('/')[-1])
+
+            if loop_month != month_year_list[0] and loop_month == "Dez":
+                year_month +=1
+            
+            loop_month = month_year_list[0]
+
+            month_year_list.append(year_month)
+            
+            loop_week.append(month_year_list)       
 
         month_to_this_day.append(loop_week)
 
