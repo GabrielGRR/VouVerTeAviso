@@ -51,9 +51,9 @@ mouse_targets.forEach(target => {
 });
 
 // todos os elementos escutam evento de clique
-box_divs.forEach(function(element) {
-    element.addEventListener("click", time_selected_toggle);
-});
+// box_divs.forEach(function(element) {
+//     element.addEventListener("click", time_selected_toggle);
+// });
 
 // Alterna entre estados
 function time_selected_toggle(event){
@@ -95,7 +95,6 @@ function time_selected_toggle(event){
             User_year: year
         });
     };
-    console.log(current_user_object_array);
     populate_colors(current_user_object_array);
 };
 
@@ -316,16 +315,50 @@ function add_user_times_to_db(){
     });    
 };
 
+
+
+
+
+
 const selection_box_divs = document.querySelectorAll('.min_box');
+
+let mb1_pressed = false;
+let already_selected = false;
+
 selection_box_divs.forEach(target => {
-    target.addEventListener("mousedown", () => {
-        console.log('down');
-        console.log(target);
-        console.log('----------');
+    target.addEventListener("mousedown", (e) => {
+        mb1_pressed = true
+        if (target.getAttribute('selected') === 'false') {
+            already_selected = false;                       
+        }
+        else {
+            already_selected = true;
+        }
+        time_selected_toggle(e); 
     });
+
+    target.addEventListener("mouseover", (e) => {
+        if(mb1_pressed && already_selected && target.getAttribute('selected') === 'true'){
+            time_selected_toggle(e);
+        }
+        else if (mb1_pressed && !already_selected && target.getAttribute('selected') === 'false'){
+            time_selected_toggle(e);
+        }
+    });
+    
+
     target.addEventListener("mouseup", () => {
-        console.log('up');
-        console.log(target);
-        console.log('----------');
-    })
+        mb1_pressed = false;
+    });
+});
+
+// sanity check
+const doc_body = document.body;
+
+doc_body.addEventListener("mousedown", () => {
+    mb1_pressed = true;
+});
+
+doc_body.addEventListener("mouseup", () => {
+    mb1_pressed = false;
 });
