@@ -1,14 +1,9 @@
 * Aprimoramentos!!
 
-DragMouseEvent:
-   - garantir que divs ao arrastar e 'desarrastar' sobre divs marcadas, elas continuem marcadas
-   - questão do ano
-
-resolver questão do ano, quais colunas irão ser organizadas primeiro (31 dez/01 jan)
-Filtrar os dias primeiro por Ano, depois mês, depois dia
-
-
+atualizar demo
 att readme 
+
+olhar questão da madrugada
 
 responsividade
 
@@ -17,6 +12,8 @@ corrigir left panel em event.html?
 checar por nomes duplicados
 
 modernizar add nome do evento
+
+add logo pro site
 
 definir todo o BD como text?
 
