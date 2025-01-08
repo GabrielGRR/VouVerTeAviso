@@ -22,15 +22,20 @@ JavaScript
 ```
 
 ## ⚙ Executando a aplicação
-1. **Copie os arquivos para sua máquina: `https://github.com/GabrielGRR/VouVerTeAviso.git`**
-2. **Navegue até a pasta**: `cd project`
-3. **Execute o programa**: `flask run`
+1. **Copie os arquivos para sua máquina**: `https://github.com/GabrielGRR/VouVerTeAviso.git`
+2. **Navegue até a pasta**: `cd VouVerTeAviso`
+3. **Inicialize e abra um ambiente virtual**: 
+1.`python -m venv venv` 
+2.`venv/Scripts/activate`
+4. **Instale os requisitos da aplicação**: `pip install -r requirements. txt`
+5. **Execute o programa**: `flask run`
 
 ## Estrutura dos arquivos
 ```
 VouVerTeAviso/
 ├── app.py                # Main application file
 ├── calendar_logic.py     # Helper file
+├── requirements.txt      # App dependencies 
 ├── Static/
 │   └── event.js          # JS for event.html
 │   └── index.js          # JS for index.html

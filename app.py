@@ -58,7 +58,7 @@ def process_data():
 
         days_array = data_package.get('days_array')
 
-        print(data_package)
+        # print(data_package)
         for i in range(len(days_array)):
             Day = days_array[i][0]
             Month = days_array[i][1]
@@ -107,24 +107,24 @@ def events(Id_event):
     # filtrar por ano > mês > Dia 
     # pytz e month_monthlist
     
-    print(result)
+    # print(result)
     #se não tiver dias marcados no calendário
     #acredito que isto não está funcionando, entender o pq dps
     #provavelmente lidar com isso via JS ou html de não deixar ele dar submit vazio
     if not result:
-        print('fedorento deu submit vazio')
+        print('Submit vazio')
         return redirect(url_for('index'))
 
     users_query = f"select User_name, User_month, User_day, User_hour, User_minute, User_year from users_time where Id_event = {Id_event};"
     users_result = cursor.execute(users_query).fetchall()
-    print(users_result)
+    # print(users_result)
 
     users_query = f"select event from event where id_event = {Id_event};"
     name_event = cursor.execute(users_query).fetchone()
-    print(name_event)
+    # print(name_event)
 
     connection.close() #talvez seja desnecessário
-    print(result)
+    # print(result)
     return render_template('event.html', Id_event = Id_event, event_data = result, users_result = users_result, name_event = name_event[0])
 
 #Enviar para o BD informações do usuário
@@ -141,15 +141,15 @@ def user_event():
 
         # não esquecer de converter user_hour e user_min para int
 
-        print(data_package)
-        print(user_name,id_event,user_times)
+        # print(data_package)
+        # print(user_name,id_event,user_times)
 
         connection = sql.connect('events_db.db')
         cursor = connection.cursor()         
         execute_command = "INSERT INTO users_time(Id_event, User_name, User_month, User_day, User_hour, User_minute, User_year) VALUES(?,?,?,?,?,?,?)"
         for time in user_times:
             cursor.execute(execute_command, [id_event, user_name, time[0], time[1], time[2], time[3], time[4]])
-            print(id_event, user_name, time[0], time[1], time[2], time[3], time[4])
+            # print(id_event, user_name, time[0], time[1], time[2], time[3], time[4])
 
         connection.commit()
         connection.close()
