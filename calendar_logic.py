@@ -17,8 +17,6 @@ current_day = original_day
 current_month = original_month
 current_year = original_year
 
-###
-
 #lista dos nomes dos meses no calendário
 months_weeks = []
 months = {1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun', 7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'}
