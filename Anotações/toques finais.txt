@@ -24,6 +24,8 @@ div lateral:
    - Adicionar botão (+15 min) / botão(-15 min)
    - adicionar JS para mudar valores
 
+fazer ser mais intuitivo
+
 dar uma olhada no caos que deve estar o .css
 
 se a hora final do evento for tipo 3 da manhã e a inicial for 18, o código detectar essa putaria
@@ -32,6 +34,13 @@ gerar chave aleatoria para o link url de invite
 adicionar senha ao usuario
 validar inputs que entram no SQL
 proteções no código, como SQL injection
+
+checar segurança do db
+remover registros do console
+resolver bug fetch? (sucesso)
+verificar SQL antigo
+
+organizar .gitignore
 
 
 -talvez?
