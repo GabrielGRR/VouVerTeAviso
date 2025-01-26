@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for vouverteaviso on 2025-01-13T23:02:54Z
+# fly.toml app configuration file generated for vouverteaviso on 2025-01-19T12:42:58Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -24,4 +24,4 @@ primary_region = 'gru'
 
 [mounts]
   source = "litefs"
-  destination = "/var/lib/litefs"
+  destination = "/var/lib/litefs
