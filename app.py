@@ -191,4 +191,5 @@ def get_users_time():
         return jsonify({"error": "Id_event parameter is required"}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
+
